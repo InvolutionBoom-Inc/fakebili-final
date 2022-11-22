@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/fakebili-app/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/fakebili-app/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/fakebili-client/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/fakebili-client/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/fakebili-controller/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/fakebili-controller/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/fakebili-domain/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/fakebili-domain/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/fakebili-infrastructure/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/fakebili-infrastructure/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/fakebili-start/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/fakebili-start/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/resources" charset="UTF-8" />
+  </component>
+</project>
