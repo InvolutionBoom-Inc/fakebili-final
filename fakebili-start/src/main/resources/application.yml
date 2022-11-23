@@ -1,0 +1,17 @@
+logging:
+    level:
+        com:
+            fakebili:
+                debug
+        root: warn
+mybatis-plus:
+    mapper-locations: classpath*:/mybatis/*Mapper.xml
+spring:
+    application:
+        name: fakebili-final
+    profiles:
+        active: dev
+    sql:
+        init:
+            mode: always
+            schema-locations: classpath:schema-${spring.datasource.platform}.sql
