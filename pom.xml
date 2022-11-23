@@ -25,8 +25,15 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
         <spring-boot.version>2.7.5</spring-boot.version>
-        <h2.version>2.1.214</h2.version>
         <cola.components.version>4.0.0</cola.components.version>
+        <lombok.version>1.18.16</lombok.version>
+        <hutool.version>5.8.9</hutool.version>
+        <mybatis-plus-boot-starter.version>3.5.2</mybatis-plus-boot-starter.version>
+        <mysql-connector-java.version>8.0.31</mysql-connector-java.version>
+        <fastjson.version>2.0.18</fastjson.version>
+        <junit.version>4.13.2</junit.version>
+        <sa-token-spring-boot-starter.version>1.32.0</sa-token-spring-boot-starter.version>
+        <sa-token-dao-redis-jackson.version>1.32.0</sa-token-dao-redis-jackson.version>
     </properties>
 
     <dependencyManagement>
@@ -103,27 +110,32 @@
             <dependency>
                 <groupId>org.projectlombok</groupId>
                 <artifactId>lombok</artifactId>
-                <version>1.18.16</version>
+                <version>${lombok.version}</version>
             </dependency>
             <dependency>
                 <groupId>cn.hutool</groupId>
                 <artifactId>hutool-all</artifactId>
-                <version>5.8.9</version>
+                <version>${hutool.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.baomidou</groupId>
                 <artifactId>mybatis-plus-boot-starter</artifactId>
-                <version>3.5.2</version>
+                <version>${mybatis-plus-boot-starter.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <version>${mysql-connector-java.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.alibaba</groupId>
                 <artifactId>fastjson</artifactId>
-                <version>2.0.18</version>
+                <version>${fastjson.version}</version>
             </dependency>
             <dependency>
                 <groupId>junit</groupId>
                 <artifactId>junit</artifactId>
-                <version>4.13.2</version>
+                <version>${junit.version}</version>
                 <scope>test</scope>
             </dependency>
             <!-- Misc End -->
@@ -132,12 +144,12 @@
             <dependency>
                 <groupId>cn.dev33</groupId>
                 <artifactId>sa-token-spring-boot-starter</artifactId>
-                <version>1.32.0</version>
+                <version>${sa-token-spring-boot-starter.version}</version>
             </dependency>
             <dependency>
                 <groupId>cn.dev33</groupId>
                 <artifactId>sa-token-dao-redis-jackson</artifactId>
-                <version>1.32.0</version>
+                <version>${sa-token-dao-redis-jackson.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.commons</groupId>
