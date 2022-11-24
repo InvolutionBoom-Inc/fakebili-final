@@ -8,7 +8,6 @@ import org.springframework.context.annotation.Configuration;
 
 /**
  * @author zzl
- * @version 0.1.0
  * @date 2022/11/24 09:42:28
  * @description mybatis-plus配置类
  */

@@ -7,7 +7,6 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 /**
  * @author zzl
- * @version 0.1.0
  * @date 2022/11/24 09:44:28
  * @description 拦截器
  */

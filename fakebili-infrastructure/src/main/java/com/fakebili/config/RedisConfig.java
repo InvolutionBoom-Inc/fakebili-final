@@ -23,7 +23,6 @@ import java.time.Duration;
 
 /**
  * @author zzl
- * @version 0.1.0
  * @date 2022/11/24 09:43:25
  * @description redis配置类
  */

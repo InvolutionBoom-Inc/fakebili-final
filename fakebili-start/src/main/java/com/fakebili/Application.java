@@ -7,8 +7,8 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 
 /**
  * @author zzl
- * @version ${YEAR}/${MONTH}/${DAY} ${HOUR}:${MINUTE}:${SECOND}
- * @since 0.1.0
+ * @date 2022/11/24 15:50:54
+ * @description 启动类
  */
 @EnableScheduling
 @SpringBootApplication(scanBasePackages = {"com.fakebili", "com.alibaba.cola"})
