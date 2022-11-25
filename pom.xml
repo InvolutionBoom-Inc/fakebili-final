@@ -25,6 +25,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
         <spring-boot.version>2.7.5</spring-boot.version>
+        <spring-boot-starter-validation.version>2.7.5</spring-boot-starter-validation.version>
         <cola.components.version>4.0.0</cola.components.version>
         <lombok.version>1.18.16</lombok.version>
         <hutool.version>5.8.9</hutool.version>
@@ -34,6 +35,8 @@
         <mysql-connector-java.version>8.0.31</mysql-connector-java.version>
         <fastjson.version>2.0.18</fastjson.version>
         <junit.version>4.13.2</junit.version>
+        <sensitive-word.version>0.2.0</sensitive-word.version>
+        <commons-pool.version>2.11.1</commons-pool.version>
         <sa-token-spring-boot-starter.version>1.32.0</sa-token-spring-boot-starter.version>
         <sa-token-dao-redis-jackson.version>1.32.0</sa-token-dao-redis-jackson.version>
     </properties>
@@ -105,6 +108,7 @@
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter-validation</artifactId>
+                <version>${spring-boot-starter-validation.version}</version>
             </dependency>
             <!--Validation API End -->
 
@@ -151,7 +155,12 @@
                 <groupId>junit</groupId>
                 <artifactId>junit</artifactId>
                 <version>${junit.version}</version>
-                <scope>test</scope>
+            </dependency>
+            <!-- 敏感词轮子 -->
+            <dependency>
+                <groupId>com.github.houbb</groupId>
+                <artifactId>sensitive-word</artifactId>
+                <version>${sensitive-word.version}</version>
             </dependency>
             <!-- Misc End -->
 
@@ -169,6 +178,7 @@
             <dependency>
                 <groupId>org.apache.commons</groupId>
                 <artifactId>commons-pool2</artifactId>
+                <version>${commons-pool.version}</version>
             </dependency>
             <!-- Sa-Token Relative -->
         </dependencies>
