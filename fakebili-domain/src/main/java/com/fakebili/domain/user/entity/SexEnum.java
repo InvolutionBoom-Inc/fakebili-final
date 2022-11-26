@@ -1,4 +1,4 @@
-package com.fakebili.infrastructure.constant.enums.error.user;
+package com.fakebili.domain.user.entity;
 
 import com.baomidou.mybatisplus.annotation.EnumValue;
 import com.fasterxml.jackson.annotation.JsonValue;

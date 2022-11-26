@@ -1,7 +1,7 @@
 package com.fakebili.infrastructure.user.database.converter;
 
 import com.fakebili.domain.user.entity.UserEntity;
-import com.fakebili.client.user.dto.data.error.user.SexEnum;
+import com.fakebili.domain.user.entity.SexEnum;
 import com.fakebili.infrastructure.user.gateway.impl.database.dataobject.UserDO;
 import org.springframework.beans.BeanUtils;
 
@@ -31,7 +31,7 @@ public class UserConverter {
         userDO.setSex(userEntity.getSex() == null ? SexEnum.DEFAULT : userEntity.getSex());
         userDO.setFace(userEntity.getFace());
         userDO.setJointime(userEntity.getJointime() == null ? Timestamp.from(Instant.now()).toLocalDateTime() : userEntity.getJointime());
-        userDO.setSilence(userEntity.getSilence() == null ? false : userEntity.getSilence());
+        userDO.setSilence(userEntity.getSilence() != null && userEntity.getSilence());
         return userDO;
     }
 

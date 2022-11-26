@@ -1,10 +1,10 @@
 package com.fakebili.infrastructure.user.gateway.impl;
 
 import com.alibaba.cola.exception.BizException;
+import com.fakebili.infrastructure.constant.enums.error.user.UserCodeEnum;
 import com.fakebili.infrastructure.user.database.converter.UserConverter;
 import com.fakebili.domain.user.gateway.UserGateway;
 import com.fakebili.domain.user.entity.UserEntity;
-import com.fakebili.client.user.dto.data.error.user.UserCodeEnum;
 import com.fakebili.infrastructure.user.gateway.impl.database.dataobject.UserDO;
 import com.fakebili.infrastructure.user.gateway.impl.database.mapper.UserMapper;
 import lombok.RequiredArgsConstructor;

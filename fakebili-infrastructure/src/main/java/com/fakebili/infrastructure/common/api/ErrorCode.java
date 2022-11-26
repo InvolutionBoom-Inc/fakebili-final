@@ -1,4 +1,4 @@
-package com.fakebili.client.api;
+package com.fakebili.infrastructure.common.api;
 
 /**
  * @author zzl

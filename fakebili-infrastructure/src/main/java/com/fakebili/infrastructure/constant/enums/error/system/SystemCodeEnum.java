@@ -1,6 +1,6 @@
 package com.fakebili.infrastructure.constant.enums.error.system;
 
-import com.fakebili.client.api.ErrorCode;
+import com.fakebili.infrastructure.common.api.ErrorCode;
 import lombok.AllArgsConstructor;
 
 /**

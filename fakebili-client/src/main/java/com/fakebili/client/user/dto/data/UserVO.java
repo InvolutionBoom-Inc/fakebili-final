@@ -1,6 +1,6 @@
 package com.fakebili.client.user.dto.data;
 
-import com.fakebili.client.user.dto.data.error.user.SexEnum;
+import com.fakebili.domain.user.entity.SexEnum;
 import lombok.Data;
 
 import java.time.LocalDateTime;

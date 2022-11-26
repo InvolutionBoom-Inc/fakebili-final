@@ -11,7 +11,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
  * @description 启动类
  */
 @EnableScheduling
-@MapperScan("com.fakebili.gateway.impl.database.mapper")
+@MapperScan("com.fakebili.infrastructure.*.gateway.impl.database.mapper")
 @SpringBootApplication(scanBasePackages = {"com.fakebili", "com.alibaba.cola"})
 public class Application {
     public static void main(String[] args) {

@@ -11,6 +11,9 @@ import com.fakebili.client.user.dto.data.UserVO;
  */
 public class UserAssembler {
 
+    private UserAssembler(){
+    }
+
     public static UserEntity toEntity(UserRegisterCmd co) {
         UserEntity userEntity = new UserEntity();
         userEntity.setNickname(co.getNickname());

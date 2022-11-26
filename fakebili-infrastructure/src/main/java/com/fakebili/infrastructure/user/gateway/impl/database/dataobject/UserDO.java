@@ -2,7 +2,7 @@ package com.fakebili.infrastructure.user.gateway.impl.database.dataobject;
 
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.fakebili.infrastructure.common.api.BaseDO;
-import com.fakebili.client.user.dto.data.error.user.SexEnum;
+import com.fakebili.domain.user.entity.SexEnum;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 

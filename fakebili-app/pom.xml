@@ -20,12 +20,6 @@
     </properties>
 
     <dependencies>
-
-        <dependency>
-            <groupId>com.fakebili</groupId>
-            <artifactId>fakebili-client</artifactId>
-        </dependency>
-
         <dependency>
             <groupId>com.fakebili</groupId>
             <artifactId>fakebili-infrastructure</artifactId>
@@ -45,7 +39,10 @@
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
         </dependency>
-
+        <dependency>
+            <groupId>com.fakebili</groupId>
+            <artifactId>fakebili-client</artifactId>
+        </dependency>
     </dependencies>
 
 </project>

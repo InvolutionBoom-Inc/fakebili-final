@@ -21,6 +21,11 @@
 
     <dependencies>
         <dependency>
+            <groupId>com.fakebili</groupId>
+            <artifactId>fakebili-infrastructure</artifactId>
+        </dependency>
+
+        <dependency>
             <groupId>com.alibaba.cola</groupId>
             <artifactId>cola-component-dto</artifactId>
         </dependency>
