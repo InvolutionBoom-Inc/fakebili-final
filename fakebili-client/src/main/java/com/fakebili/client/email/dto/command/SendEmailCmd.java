@@ -6,7 +6,6 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
 import java.io.Serial;
 
 /**

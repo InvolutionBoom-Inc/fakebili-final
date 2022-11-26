@@ -40,7 +40,7 @@ public class UserGatewayImpl implements UserGateway {
 
     @Override
     public Boolean checkByUsername(Long userId, String username) {
-        return null;
+        return true;
     }
 
     /**

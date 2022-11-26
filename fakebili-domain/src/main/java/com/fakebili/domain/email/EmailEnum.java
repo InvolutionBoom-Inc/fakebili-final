@@ -14,11 +14,9 @@ import lombok.Getter;
 @AllArgsConstructor
 public enum EmailEnum {
 
-    VERIFY_CODE(0, "验证码类型");
+    VERIFY_CODE(0, "验证码");
 
-    @EnumValue
     private final Integer key;
 
-    @JsonValue
     private final String value;
 }

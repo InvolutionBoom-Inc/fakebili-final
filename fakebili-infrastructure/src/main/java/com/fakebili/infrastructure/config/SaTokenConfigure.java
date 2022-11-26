@@ -26,11 +26,8 @@ public class SaTokenConfigure implements WebMvcConfigurer {
                 // 指定 拦截路由 与 放行路由
                 .addInclude("/**").addExclude("/favicon.ico")
 
-                // 认证函数: 每次请求执行
-                .setAuth(obj -> {
-                    // 登录认证 -- 拦截需要登录就才能用的路由, 判断是否登录过，没登录过⑨抛出异常
-                    SaRouter.match("/**").notMatch("/api/v1/user/login", "/api/v1/user/register", "/api/v1/captcha/sendTextCaptcha").check(StpUtil::checkLogin);
-                })
+                // 认证函数: 每次请求执行 登录认证 -- 拦截需要登录就才能用的路由, 判断是否登录过，没登录过⑨抛出异常
+                .setAuth(obj -> SaRouter.match("/**").notMatch("/api/v1/user/login", "/api/v1/user/register", "/api/v1/captcha/sendTextCaptcha").check(StpUtil::checkLogin))
 
                 // 异常处理函数：每次认证函数发生异常时执行此函数
                 .setError(e -> SaResult.error(e.getMessage()))
@@ -46,9 +43,6 @@ public class SaTokenConfigure implements WebMvcConfigurer {
                                 // 是否启用浏览器默认XSS防护： 0=禁用 | 1=启用 | 1; mode=block 启用, 并在检查到XSS攻击时，停止渲染页面
                                 .setHeader("X-XSS-Protection", "1; mode=block")
                                 // 禁用浏览器内容嗅探
-                                .setHeader("X-Content-Type-Options", "nosniff")
-                                .setHeader("Access-Control-Allow-Origin", "*")
-                                .setHeader("Access-Control-Allow-Headers", "*")
-                );
+                                .setHeader("X-Content-Type-Options", "nosniff").setHeader("Access-Control-Allow-Origin", "*").setHeader("Access-Control-Allow-Headers", "*"));
     }
 }

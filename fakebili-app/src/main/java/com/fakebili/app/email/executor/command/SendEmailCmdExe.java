@@ -2,12 +2,10 @@ package com.fakebili.app.email.executor.command;
 
 import com.fakebili.client.email.dto.command.SendEmailCmd;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Component;
-import org.springframework.util.Assert;
 
 import java.util.Date;
 
@@ -28,14 +26,14 @@ public class SendEmailCmdExe {
 
     public boolean execute(SendEmailCmd cmd){
         switch(cmd.getType().getKey()){
-            case 0 -> SendCode(cmd);
+            case 0 -> sendCode(cmd);
         }
         return true;
     }
 
-    public void SendCode(SendEmailCmd cmd){
-        SimpleMailMessage mail = new SimpleMailMessage();
+    public void sendCode(SendEmailCmd cmd){
 
+        SimpleMailMessage mail = new SimpleMailMessage();
         //邮件发件人
         mail.setFrom(sendMailer);
         //邮件收件人 1或多个

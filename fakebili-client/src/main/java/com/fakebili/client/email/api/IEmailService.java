@@ -12,7 +12,6 @@ public interface IEmailService {
      * 发送邮件
      *
      * @param cmd 发送邮件请求
-     * @return 是否发送成功
      */
-    boolean sendEmail(SendEmailCmd cmd);
+    void sendEmail(SendEmailCmd cmd);
 }

@@ -18,19 +18,17 @@ import org.springframework.transaction.annotation.Transactional;
  * @date 2022/11/26 18:34:38
  * @description 监听邮件发送
  */
-@Slf4j
 @Component
-@Transactional
 @RequiredArgsConstructor
 public class EmailListener {
 
-    public final IEmailService iEmailService;
+    public final IEmailService emailService;
 
     @Async
     @EventListener(classes = SendVerifyEvent.class)
     public void onApplicationEvent(SendVerifyEvent event) {
-        TextVerifyEntity source = (TextVerifyEntity) event.getSource();
 
+        TextVerifyEntity source = (TextVerifyEntity) event.getSource();
         SendEmailCmd sendEmailCmd = new SendEmailCmd();
         if(source.getType() == 0){
             sendEmailCmd.setType(EmailEnum.VERIFY_CODE);
@@ -39,6 +37,6 @@ public class EmailListener {
         sendEmailCmd.setRecipient(source.getEmail());
         sendEmailCmd.setContent(source.getCode());
 
-        iEmailService.sendEmail(sendEmailCmd);
+        emailService.sendEmail(sendEmailCmd);
     }
 }

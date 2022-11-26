@@ -10,6 +10,11 @@ import com.fakebili.infrastructure.user.gateway.impl.database.dataobject.UserDO;
  */
 public interface UserMapper extends BaseMapper<UserDO> {
 
+    /**
+     * 查询密码
+     * @param username 用户名
+     * @return 密码
+     */
     String selectPassword(String username);
 
 }

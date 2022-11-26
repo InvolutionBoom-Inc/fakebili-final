@@ -9,5 +9,9 @@ import com.fakebili.client.captcha.dto.command.SendVerifyCmd;
  */
 public interface ITextCaptchaService {
 
+    /**
+     * 发送验证码
+     * @param cmd 包含邮箱地址
+     */
     void sendVerifyCode(SendVerifyCmd cmd);
 }

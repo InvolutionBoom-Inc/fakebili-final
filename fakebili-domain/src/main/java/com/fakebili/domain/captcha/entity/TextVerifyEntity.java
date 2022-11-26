@@ -8,8 +8,8 @@ import lombok.Data;
  * @version 0.1.0 2022/11/26 20:11:58
  * @since 0.1.0
  */
-@Builder
 @Data
+@Builder
 public class TextVerifyEntity {
 
     private String code;

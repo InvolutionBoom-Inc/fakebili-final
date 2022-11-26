@@ -18,7 +18,7 @@ public class EmailServiceImpl implements IEmailService {
     public final SendEmailCmdExe sendEmailCmdExe;
 
     @Override
-    public boolean sendEmail(SendEmailCmd cmd) {
-        return sendEmailCmdExe.execute(cmd);
+    public void sendEmail(SendEmailCmd cmd) {
+        sendEmailCmdExe.execute(cmd);
     }
 }

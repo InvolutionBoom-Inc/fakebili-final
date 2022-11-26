@@ -25,7 +25,6 @@ public class StpInterfaceImpl implements StpInterface {
         list.add("user.add");
         list.add("user.update");
         list.add("user.get");
-        // list.add("user.delete");
         list.add("art.*");
         return list;
     }
