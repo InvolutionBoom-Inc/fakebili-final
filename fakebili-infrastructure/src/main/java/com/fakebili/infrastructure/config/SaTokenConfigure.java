@@ -29,7 +29,7 @@ public class SaTokenConfigure implements WebMvcConfigurer {
                 // 认证函数: 每次请求执行
                 .setAuth(obj -> {
                     // 登录认证 -- 拦截需要登录就才能用的路由, 判断是否登录过，没登录过⑨抛出异常
-                    SaRouter.match("/**").notMatch("/api/v1/user/login", "/api/v1/user/register").check(StpUtil::checkLogin);
+                    SaRouter.match("/**").notMatch("/api/v1/user/login", "/api/v1/user/register", "/api/v1/captcha/sendTextCaptcha").check(StpUtil::checkLogin);
                 })
 
                 // 异常处理函数：每次认证函数发生异常时执行此函数

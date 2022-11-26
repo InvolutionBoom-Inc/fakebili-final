@@ -14,7 +14,7 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 public enum SystemCodeEnum implements ErrorCode {
 
-    B_USER_PASSWORD_ERROR("B_USER_passwordError", "用户名或密码不正确");
+    B_REQUEST_REPEATED_ERROR("B_REQUEST_repeatedError", "重复请求");
 
     private String code;
     private String message;

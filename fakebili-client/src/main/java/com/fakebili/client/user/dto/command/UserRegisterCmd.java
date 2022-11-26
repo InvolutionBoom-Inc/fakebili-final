@@ -35,7 +35,6 @@ public class UserRegisterCmd extends Command {
     @Email
     private String email;
 
-
     private String code;
 
 }
