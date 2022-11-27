@@ -21,4 +21,9 @@ public class EmailServiceImpl implements IEmailService {
     public void sendEmail(SendEmailCmd cmd) {
         sendEmailCmdExe.execute(cmd);
     }
+
+    @Override
+    public boolean checkCaptcha(String key) {
+        return sendEmailCmdExe.checkCaptcha(key);
+    }
 }

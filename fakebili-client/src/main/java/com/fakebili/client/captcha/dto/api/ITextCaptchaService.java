@@ -1,5 +1,6 @@
 package com.fakebili.client.captcha.dto.api;
 
+import com.alibaba.cola.dto.Response;
 import com.fakebili.client.captcha.dto.command.SendVerifyCmd;
 
 /**
@@ -13,5 +14,5 @@ public interface ITextCaptchaService {
      * 发送验证码
      * @param cmd 包含邮箱地址
      */
-    void sendVerifyCode(SendVerifyCmd cmd);
+    Response sendVerifyCode(SendVerifyCmd cmd);
 }

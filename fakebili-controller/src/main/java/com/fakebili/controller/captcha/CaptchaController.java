@@ -25,7 +25,6 @@ public class CaptchaController {
 
     @PostMapping("sendTextCaptcha")
     public Response SendTextCaptcha(@RequestBody @Valid SendVerifyCmd cmd) {
-        textCaptchaService.sendVerifyCode(cmd);
-        return Response.buildSuccess();
+        return textCaptchaService.sendVerifyCode(cmd);
     }
 }

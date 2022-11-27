@@ -1,5 +1,7 @@
 package com.fakebili.app.user.service;
 
+import com.alibaba.cola.dto.MultiResponse;
+import com.alibaba.cola.dto.SingleResponse;
 import com.fakebili.client.user.api.IUserService;
 import com.fakebili.app.user.executor.command.UserRegisterCmdExe;
 import com.fakebili.client.user.dto.command.UserRegisterCmd;
@@ -19,8 +21,9 @@ public class UserServiceImpl implements IUserService {
     private final UserRegisterCmdExe userRegisterCmdExe;
 
     @Override
-    public UserVO register(UserRegisterCmd cmd) {
-        return userRegisterCmdExe.execute(cmd);
+    public SingleResponse<UserVO> register(UserRegisterCmd cmd) {
+        UserVO vo = userRegisterCmdExe.execute(cmd);
+        return SingleResponse.of(vo);
     }
 
 }

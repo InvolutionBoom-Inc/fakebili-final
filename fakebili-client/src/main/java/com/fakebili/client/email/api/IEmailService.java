@@ -14,4 +14,12 @@ public interface IEmailService {
      * @param cmd 发送邮件请求
      */
     void sendEmail(SendEmailCmd cmd);
+
+    /**
+     * 验证码校验
+     *
+     * @param key redis存储的key
+     * @return 验证码是否有效
+     */
+    boolean checkCaptcha(String key);
 }

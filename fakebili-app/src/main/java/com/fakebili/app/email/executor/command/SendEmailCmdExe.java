@@ -1,6 +1,7 @@
 package com.fakebili.app.email.executor.command;
 
 import com.fakebili.client.email.dto.command.SendEmailCmd;
+import com.fakebili.infrastructure.common.cache.RedisService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.SimpleMailMessage;
@@ -18,20 +19,21 @@ import java.util.Date;
 @RequiredArgsConstructor
 public class SendEmailCmdExe {
 
-    //注入邮件工具类
+    //邮件工具类
     private final JavaMailSender javaMailSender;
+    private final RedisService redisService;
 
     @Value("${spring.mail.username}")
     private String sendMailer;
 
     public boolean execute(SendEmailCmd cmd){
         switch(cmd.getType().getKey()){
-            case 0 -> sendCode(cmd);
+            case 0 -> sendCaptcha(cmd);
         }
         return true;
     }
 
-    public void sendCode(SendEmailCmd cmd){
+    public void sendCaptcha(SendEmailCmd cmd){
 
         SimpleMailMessage mail = new SimpleMailMessage();
         //邮件发件人
@@ -48,4 +50,9 @@ public class SendEmailCmdExe {
         javaMailSender.send(mail);
 
     }
+
+    public boolean checkCaptcha(String key) {
+        return redisService.hasKey(key);
+    }
+
 }

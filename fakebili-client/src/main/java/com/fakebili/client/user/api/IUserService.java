@@ -1,5 +1,7 @@
 package com.fakebili.client.user.api;
 
+import com.alibaba.cola.dto.MultiResponse;
+import com.alibaba.cola.dto.SingleResponse;
 import com.fakebili.client.user.dto.command.UserRegisterCmd;
 import com.fakebili.client.user.dto.data.UserVO;
 
@@ -16,5 +18,5 @@ public interface IUserService {
      * @param cmd 用户注册请求
      * @return Response
      */
-    UserVO register(UserRegisterCmd cmd);
+    SingleResponse<UserVO> register(UserRegisterCmd cmd);
 }

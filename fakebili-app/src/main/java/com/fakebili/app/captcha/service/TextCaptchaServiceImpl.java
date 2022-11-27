@@ -1,5 +1,7 @@
 package com.fakebili.app.captcha.service;
 
+import com.alibaba.cola.catchlog.CatchAndLog;
+import com.alibaba.cola.dto.Response;
 import com.fakebili.app.captcha.executor.command.SendVerifyCmdExe;
 import com.fakebili.client.captcha.dto.api.ITextCaptchaService;
 import com.fakebili.client.captcha.dto.command.SendVerifyCmd;
@@ -12,12 +14,14 @@ import org.springframework.stereotype.Service;
  * @since 0.1.0
  */
 @Service
+@CatchAndLog
 @RequiredArgsConstructor
 public class TextCaptchaServiceImpl implements ITextCaptchaService {
     private final SendVerifyCmdExe sendVerifyCmdExe;
 
     @Override
-    public void sendVerifyCode(SendVerifyCmd cmd) {
+    public Response sendVerifyCode(SendVerifyCmd cmd) {
         sendVerifyCmdExe.execute(cmd);
+        return Response.buildSuccess();
     }
 }
