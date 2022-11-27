@@ -39,6 +39,9 @@
     <!--这个logger没有指定appender，它会继承root节点中定义的那些appender-->
     <logger name="com.fakebili" level="DEBUG"/>
 
+    <!--这个是统一异常处理，日志记录组件的日志-->
+    <logger name="com.alibaba.cola.catchlog" level="DEBUG"/>
+
     <!--数据库日志-->
     <!--由于这个logger自动继承了root的appender，root中已经有stdout的appender了，自己这边又引入了stdout的appender-->
     <!--如果没有设置 additivity="false" ,就会导致一条日志在控制台输出两次的情况-->
