@@ -26,14 +26,14 @@ public class SendEmailCmdExe {
     @Value("${spring.mail.username}")
     private String sendMailer;
 
-    public boolean execute(SendEmailCmd cmd){
-        switch(cmd.getType().getKey()){
+    public boolean execute(SendEmailCmd cmd) {
+        switch (cmd.getType().getKey()) {
             case 0 -> sendCaptcha(cmd);
         }
         return true;
     }
 
-    public void sendCaptcha(SendEmailCmd cmd){
+    public void sendCaptcha(SendEmailCmd cmd) {
 
         SimpleMailMessage mail = new SimpleMailMessage();
         //邮件发件人
@@ -51,8 +51,12 @@ public class SendEmailCmdExe {
 
     }
 
-    public boolean checkCaptcha(String key) {
-        return redisService.hasKey(key);
+    public boolean checkCaptcha(String key, String captcha) {
+        if (redisService.hasKey(key)) {
+            String code = (String) redisService.get(key);
+            return code.equals(captcha);
+        }
+        return false;
     }
 
 }

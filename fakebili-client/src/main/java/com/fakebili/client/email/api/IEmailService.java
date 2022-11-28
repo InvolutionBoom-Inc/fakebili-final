@@ -21,5 +21,5 @@ public interface IEmailService {
      * @param key redis存储的key
      * @return 验证码是否有效
      */
-    boolean checkCaptcha(String key);
+    boolean checkCaptcha(String key,String captcha);
 }

@@ -1,6 +1,7 @@
 package com.fakebili.app.user.service;
 
 import com.alibaba.cola.catchlog.CatchAndLog;
+import com.alibaba.cola.dto.MultiResponse;
 import com.alibaba.cola.dto.SingleResponse;
 import com.fakebili.app.user.executor.command.UserRegisterCmdExe;
 import com.fakebili.app.user.executor.command.UserRoleSaveCmdExe;

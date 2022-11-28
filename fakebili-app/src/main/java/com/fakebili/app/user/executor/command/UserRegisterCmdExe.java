@@ -34,7 +34,7 @@ public class UserRegisterCmdExe {
         if (SensitiveWordHelper.contains(cmd.getNickname())) {
             throw new BizException(UserCodeEnum.B_USER_NICKNAME_ERROR.getCode(), UserCodeEnum.B_USER_NICKNAME_ERROR.getMessage());
         }
-        if (emailService.checkCaptcha(cmd.getCode())) {
+        if (!emailService.checkCaptcha(cmd.getEmail(),cmd.getCode())) {
             throw new BizException(CaptchaCodeEnum.B_CAPTCHA_ERROR.getCode(), CaptchaCodeEnum.B_CAPTCHA_ERROR.getMessage());
         }
 
