@@ -5,22 +5,34 @@ logging:
         debug
     root: warn
 
+jasypt:
+  mysql-base-url: fakebili-encrypt[Bc77lYfmbnsWX73/7axyv75hySsSZBzoslF4gYyVptj2MSmekBN8TJ4sDns+jQJCxjybeJPl9wiRD7oKYbMXPsqc9JUoAlazxRL2owOeaJo=]
+  mysql-password: fakebili-encrypt[B5V+oH14UpQKO7W6ifhixwiZCy81PhZ3Q4pH5nCmtv+txZSjaoCmLn/7hWpeEeUns+kNPLHqd9uBuMvorij5EQ==]
+  redis-host: fakebili-encrypt[Ci01aZmOYwMnV97uivjCUUoXv4U/6iPhGUUcoZkOT7kVjJIT6tSxamTXhCjdK8fZ]
+  redis-password: fakebili-encrypt[elZ84p7mN7rpZezd5J7Bov4gJnHlEy+E7O5ec03xUyGqmlCvZ2dAJr5zUk6JfbLS]
+  mail-username: fakebili-encrypt[vLVK42TvK+ClQGh5TwlTaQ8TdnlFEgQsPpMAbBY9Rydx5R0w6inEL7pmtNN07P8Wur/x27yGX8OpMZ5GhfS50A==]
+  mail-password: fakebili-encrypt[ZlNuKvyC31TWAVx9PVE16VBnCYlriqpSyiecsWXKfwz1+1ZbZiBEBcNuXRpYPQSL4cEXdJCRrIJyAt1TsD/KuQ==]
+  encryptor:
+    property:
+      prefix: "fakebili-encrypt["
+      suffix: "]"
+
 spring:
   application:
     name: fakebili-final
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://gz-cdb-qq3mzer3.sql.tencentcdb.com:57949/fakebili?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf8&allowMultiQueries=true
+    url: jdbc:mysql://${jasypt.mysql-base-url}/fakebili?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf8&allowMultiQueries=true
     username: root
-    password: dianchuangclub@ssit
+    password: ${jasypt.mysql-password}
   jackson:
     default-property-inclusion: NON_NULL
     time-zone: GMT+8
     date-format: yyyy-MM-dd
   redis:
-    host: 175.178.148.132
+    host: ${jasypt.redis-host}
     port: 11451
-    password: 1145141919810
+    password: ${jasypt.redis-password}
     database: 0
     timeout: 1800000
     lettuce:
@@ -34,9 +46,9 @@ spring:
     #配置smtp服务主机地址
     host: smtp.qq.com
     #发送者邮箱
-    username: 495611708@qq.com
+    username: ${jasypt.mail-username}
     #配置密码,注意不是真正的密码，而是刚刚申请到的授权码
-    password: xahnlirhxfaacagc
+    password: ${jasypt.mail-password}
     #端口号465或587
     port: 587
     #默认的邮件编码为UTF-8

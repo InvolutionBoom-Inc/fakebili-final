@@ -9,7 +9,6 @@ import com.fakebili.infrastructure.user.database.converter.UserConverter;
 import com.fakebili.infrastructure.user.gateway.impl.database.dataobject.UserDO;
 import com.fakebili.infrastructure.user.gateway.impl.database.mapper.UserMapper;
 import lombok.RequiredArgsConstructor;
-import org.apache.catalina.User;
 import org.apache.ibatis.exceptions.PersistenceException;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
@@ -54,18 +53,15 @@ public class UserGatewayImpl implements UserGateway {
      * 新增用户
      */
     private UserEntity addUser(UserEntity userEntity) {
-
         UserDO queryUser = userMapper.selectById(userEntity.getId());
         if (queryUser != null) {
             throw new BizException(UserCodeEnum.B_USER_USER_REPEAT.getMessage());
         }
 
-        // 2. 再保存userDO
-        UserDO userDO = UserConverter.toAddUserDO(userEntity);
-        try{
-            userMapper.insert(userDO);
-        }catch (Exception e){
-            throw new BizException(UserCodeEnum.B_USER_USERNAME_REPEAT.getCode(), UserCodeEnum.B_USER_USERNAME_REPEAT.getMessage());
+        try {
+            userMapper.insert(UserConverter.toAddUserDO(userEntity));
+        } catch (Exception e) {
+            throw new BizException(UserCodeEnum.B_USER_USER_REPEAT.getCode(), UserCodeEnum.B_USER_USER_REPEAT.getMessage());
         }
 
         LambdaQueryWrapper<UserDO> queryWrapper = new LambdaQueryWrapper<>();

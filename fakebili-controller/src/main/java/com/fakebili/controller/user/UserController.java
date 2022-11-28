@@ -1,7 +1,5 @@
 package com.fakebili.controller.user;
 
-import com.alibaba.cola.dto.MultiResponse;
-import com.alibaba.cola.dto.Response;
 import com.alibaba.cola.dto.SingleResponse;
 import com.fakebili.client.user.api.IUserService;
 import com.fakebili.client.user.dto.command.UserRegisterCmd;
@@ -25,4 +23,5 @@ public class UserController {
     public SingleResponse<UserVO> register(@RequestBody @Valid UserRegisterCmd cmd) {
         return userService.register(cmd);
     }
+
 }

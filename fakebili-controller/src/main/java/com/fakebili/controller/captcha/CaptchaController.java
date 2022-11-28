@@ -27,4 +27,5 @@ public class CaptchaController {
     public Response SendTextCaptcha(@RequestBody @Valid SendVerifyCmd cmd) {
         return textCaptchaService.sendVerifyCode(cmd);
     }
+
 }
