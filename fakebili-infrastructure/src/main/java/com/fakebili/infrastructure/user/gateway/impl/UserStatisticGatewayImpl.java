@@ -3,6 +3,8 @@ package com.fakebili.infrastructure.user.gateway.impl;
 import com.alibaba.cola.exception.BizException;
 import com.fakebili.domain.user.entity.UserStatisticEntity;
 import com.fakebili.domain.user.gateway.UserStatisticGateway;
+import com.fakebili.infrastructure.constant.enums.error.system.SystemCodeEnum;
+import com.fakebili.infrastructure.constant.enums.error.user.UserRoleCodeEnum;
 import com.fakebili.infrastructure.constant.enums.error.user.UserStatisticCodeEnum;
 import com.fakebili.infrastructure.user.database.converter.UserStatisticConverter;
 import com.fakebili.infrastructure.user.gateway.impl.database.dataobject.UserStatisticDO;
@@ -40,10 +42,10 @@ public class UserStatisticGatewayImpl implements UserStatisticGateway {
      */
     private UserStatisticEntity addUserStatistic(UserStatisticEntity userStatisticEntity) {
 
-        UserStatisticDO userStatisticDO = UserStatisticConverter.toAddUserStatisticDO(userStatisticEntity);
-        int update = userStatisticMapper.insert(userStatisticDO);
-        if (update < 1) {
-            throw new PersistenceException("初始用户统计异常");
+        try {
+            userStatisticMapper.insert(UserStatisticConverter.toAddUserStatisticDO(userStatisticEntity));
+        } catch (Exception e) {
+            throw new BizException(UserStatisticCodeEnum.B_USER_STATISTIC_REPEAT.getMessage());
         }
 
         return userStatisticEntity;
@@ -57,11 +59,13 @@ public class UserStatisticGatewayImpl implements UserStatisticGateway {
 
         UserStatisticDO userStatisticDO = UserStatisticConverter.toAddUserStatisticDO(userStatisticEntity);
         if (userStatisticMapper.selectById(userStatisticDO.getId()) == null) {
-            throw new BizException(UserStatisticCodeEnum.B_USERSTATISTIC_UNDEFINED.getMessage());
+            throw new BizException(UserStatisticCodeEnum.B_USER_STATISTIC_UNDEFINED.getMessage());
         }
-        int update = userStatisticMapper.updateById(userStatisticDO);
-        if (update < 1) {
-            throw new PersistenceException("更新用户异常");
+
+        try {
+            userStatisticMapper.updateById(userStatisticDO);
+        } catch (Exception e) {
+            throw new BizException(SystemCodeEnum.B_SERVER_ERROR.getMessage());
         }
 
         return UserStatisticConverter.toEntity(userStatisticDO);

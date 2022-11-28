@@ -1,5 +1,6 @@
 package com.fakebili.app.user.executor.command;
 
+import cn.hutool.crypto.digest.MD5;
 import com.alibaba.cola.exception.BizException;
 import com.fakebili.app.user.assembler.UserAssembler;
 import com.fakebili.client.email.api.IEmailService;
@@ -37,6 +38,9 @@ public class UserRegisterCmdExe {
         if (!emailService.checkCaptcha(cmd.getEmail(),cmd.getCode())) {
             throw new BizException(CaptchaCodeEnum.B_CAPTCHA_ERROR.getCode(), CaptchaCodeEnum.B_CAPTCHA_ERROR.getMessage());
         }
+
+        String encodedPassword = cmd.getPassword() + "114514";
+        cmd.setPassword(MD5.create().digestHex(encodedPassword));
 
         UserEntity userEntity = userGateway.save(UserAssembler.toEntity(cmd));
         return UserAssembler.toValueObject(userEntity);

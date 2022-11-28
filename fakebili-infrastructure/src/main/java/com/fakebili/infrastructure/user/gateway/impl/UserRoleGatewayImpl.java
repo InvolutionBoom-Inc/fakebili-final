@@ -3,7 +3,10 @@ package com.fakebili.infrastructure.user.gateway.impl;
 import com.alibaba.cola.exception.BizException;
 import com.fakebili.domain.user.entity.UserRoleEntity;
 import com.fakebili.domain.user.gateway.UserRoleGateway;
+import com.fakebili.infrastructure.constant.enums.error.system.SystemCodeEnum;
+import com.fakebili.infrastructure.constant.enums.error.user.UserCodeEnum;
 import com.fakebili.infrastructure.constant.enums.error.user.UserRoleCodeEnum;
+import com.fakebili.infrastructure.user.database.converter.UserConverter;
 import com.fakebili.infrastructure.user.database.converter.UserRoleConverter;
 import com.fakebili.infrastructure.user.gateway.impl.database.dataobject.UserRoleDO;
 import com.fakebili.infrastructure.user.gateway.impl.database.mapper.UserRoleMapper;
@@ -39,10 +42,10 @@ public class UserRoleGatewayImpl implements UserRoleGateway {
      */
     private UserRoleEntity addUserRole(UserRoleEntity userRoleEntity) {
 
-        UserRoleDO userRoleDO = UserRoleConverter.toAddUserRoleDO(userRoleEntity);
-        int update = userRoleMapper.insert(userRoleDO);
-        if (update < 1) {
-            throw new PersistenceException("保存用户角色关联异常");
+        try {
+            userRoleMapper.insert(UserRoleConverter.toAddUserRoleDO(userRoleEntity));
+        } catch (Exception e) {
+            throw new BizException(UserRoleCodeEnum.B_USER_ROLE_ERROR.getMessage());
         }
 
         return userRoleEntity;
@@ -56,12 +59,13 @@ public class UserRoleGatewayImpl implements UserRoleGateway {
 
         UserRoleDO userRoleDO = UserRoleConverter.toAddUserRoleDO(userRoleEntity);
         if (userRoleMapper.selectById(userRoleDO.getId()) == null) {
-            throw new BizException(UserRoleCodeEnum.B_USERROLE_UNDEFINED.getMessage());
+            throw new BizException(UserRoleCodeEnum.B_USER_ROLE_UNDEFINED.getMessage());
         }
 
-        int update = userRoleMapper.updateById(userRoleDO);
-        if (update < 1) {
-            throw new PersistenceException("更新用户角色关联异常");
+        try {
+            userRoleMapper.updateById(userRoleDO);
+        } catch (Exception e) {
+            throw new BizException(SystemCodeEnum.B_SERVER_ERROR.getMessage());
         }
 
         return UserRoleConverter.toEntity(userRoleDO);

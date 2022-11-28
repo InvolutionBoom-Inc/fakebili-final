@@ -29,7 +29,7 @@ public class UserRegisterCmd extends Command {
     /**
      * 密码
      */
-    @Size(max = 10, min = 6, message = "密码长度需为6-10")
+    @Size(max = 32, min = 32, message = "密码长度需为32")
     private String password;
 
     @Email

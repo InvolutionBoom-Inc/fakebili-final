@@ -11,8 +11,8 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 public enum UserStatisticCodeEnum implements ErrorCode {
 
-    B_USERSTATISTIC_UNDEFINED("B_USERSTATISTIC_undefined", "用户统计不存在"),
-    B_USERSTATISTIC_USERSTATISTIC_REPEAT("B_USERSTATISTIC_userStatisticRepeat", "用户统计重复");
+    B_USER_STATISTIC_UNDEFINED("B_USER_statisticUndefined", "用户统计信息不存在"),
+    B_USER_STATISTIC_REPEAT("B_USER_statisticRepeat", "用户统计重复");
 
     private String code;
     private String message;

@@ -14,7 +14,8 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 public enum SystemCodeEnum implements ErrorCode {
 
-    B_REQUEST_REPEATED_ERROR("B_REQUEST_repeatedError", "重复请求");
+    B_REQUEST_REPEATED_ERROR("B_REQUEST_repeatedError", "重复请求"),
+    B_SERVER_ERROR("B_SERVER_ERROR","服务器错误");
 
     private String code;
     private String message;

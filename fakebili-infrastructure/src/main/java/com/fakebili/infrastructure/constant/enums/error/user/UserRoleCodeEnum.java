@@ -11,7 +11,8 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 public enum UserRoleCodeEnum implements ErrorCode {
 
-    B_USERROLE_UNDEFINED("B_USERROLE_undefined", "用户统计信息不存在");
+    B_USER_ROLE_UNDEFINED("B_USER_roleUndefined", "用户角色信息不存在"),
+    B_USER_ROLE_ERROR("B_USER_roleError","用户角色关联异常");
 
     private String code;
     private String message;
