@@ -59,7 +59,7 @@ public class UserRoleGatewayImpl implements UserRoleGateway {
             throw new BizException(UserRoleCodeEnum.B_USERROLE_UNDEFINED.getMessage());
         }
 
-        int update = userRoleMapper.update(userRoleDO, null);
+        int update = userRoleMapper.updateById(userRoleDO);
         if (update < 1) {
             throw new PersistenceException("更新用户角色关联异常");
         }

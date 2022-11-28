@@ -2,6 +2,7 @@ package com.fakebili.app.user.assembler;
 
 import com.fakebili.client.user.dto.command.UserRoleSaveCmd;
 import com.fakebili.domain.user.entity.UserRoleEntity;
+import org.springframework.beans.BeanUtils;
 
 /**
  * @author lgz
@@ -14,6 +15,8 @@ public class UserRoleAssembler {
     }
 
     public static UserRoleEntity toEntity(UserRoleSaveCmd co) {
-        return UserRoleEntity.builder().id(co.getId()).roleId(co.getRoleId()).mid(co.getMid()).build();
+        UserRoleEntity userRoleEntity = new UserRoleEntity();
+        BeanUtils.copyProperties(co, userRoleEntity);
+        return userRoleEntity;
     }
 }

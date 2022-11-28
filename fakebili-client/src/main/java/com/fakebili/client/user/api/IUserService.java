@@ -19,10 +19,4 @@ public interface IUserService {
      */
     SingleResponse<UserVO> register(UserRegisterCmd cmd);
 
-    /**
-     * 校验mid真实性
-     * @param id id
-     * @return 是否
-     */
-    Boolean checkId(Integer id);
 }

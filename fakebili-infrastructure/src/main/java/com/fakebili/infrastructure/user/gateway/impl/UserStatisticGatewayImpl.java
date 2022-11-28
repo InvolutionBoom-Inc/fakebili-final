@@ -17,7 +17,7 @@ import org.springframework.transaction.annotation.Transactional;
  * @version 0.1.0 2022/11/28 10:11:28
  * @since 0.1.0
  */
-@Component("userRoleGateway")
+@Component("userStatisticGateway")
 @RequiredArgsConstructor
 public class UserStatisticGatewayImpl implements UserStatisticGateway {
 
@@ -59,7 +59,7 @@ public class UserStatisticGatewayImpl implements UserStatisticGateway {
         if (userStatisticMapper.selectById(userStatisticDO.getId()) == null) {
             throw new BizException(UserStatisticCodeEnum.B_USERSTATISTIC_UNDEFINED.getMessage());
         }
-        int update = userStatisticMapper.update(userStatisticDO, null);
+        int update = userStatisticMapper.updateById(userStatisticDO);
         if (update < 1) {
             throw new PersistenceException("更新用户异常");
         }

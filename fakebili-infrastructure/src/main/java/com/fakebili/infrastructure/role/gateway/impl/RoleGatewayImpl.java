@@ -1,6 +1,6 @@
 package com.fakebili.infrastructure.role.gateway.impl;
 
-import com.fakebili.domain.role.RoleGateway;
+import com.fakebili.domain.role.gateway.RoleGateway;
 import com.fakebili.infrastructure.role.gateway.impl.database.mapper.RoleMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;

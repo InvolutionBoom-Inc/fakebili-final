@@ -30,6 +30,7 @@ public class UserRegisterCmdExe {
     public final IEmailService emailService;
 
     public UserVO execute(UserRegisterCmd cmd) {
+
         if (SensitiveWordHelper.contains(cmd.getNickname())) {
             throw new BizException(UserCodeEnum.B_USER_NICKNAME_ERROR.getCode(), UserCodeEnum.B_USER_NICKNAME_ERROR.getMessage());
         }
@@ -39,6 +40,7 @@ public class UserRegisterCmdExe {
 
         UserEntity userEntity = userGateway.save(UserAssembler.toEntity(cmd));
         return UserAssembler.toValueObject(userEntity);
+        
     }
 
 }

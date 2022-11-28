@@ -1,7 +1,6 @@
 package com.fakebili.client.user.dto.command;
 
 import com.alibaba.cola.dto.Command;
-import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -14,7 +13,6 @@ import java.io.Serial;
  * @since 0.1.0
  */
 @Data
-@Builder
 @EqualsAndHashCode(callSuper = true)
 public class UserRoleSaveCmd extends Command {
 

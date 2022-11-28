@@ -5,7 +5,6 @@ import com.alibaba.cola.dto.SingleResponse;
 import com.fakebili.app.user.executor.command.UserRegisterCmdExe;
 import com.fakebili.app.user.executor.command.UserRoleSaveCmdExe;
 import com.fakebili.app.user.executor.command.UserStatisticSaveCmdExe;
-import com.fakebili.app.user.executor.command.query.UserCheckIdQueryExe;
 import com.fakebili.client.user.api.IUserService;
 import com.fakebili.client.user.dto.command.UserRegisterCmd;
 import com.fakebili.client.user.dto.command.UserRoleSaveCmd;
@@ -28,23 +27,27 @@ public class UserServiceImpl implements IUserService {
 
     private final UserRoleSaveCmdExe userRoleSaveCmdExe;
 
-    private final UserCheckIdQueryExe userCheckIdQueryExe;
-
     private final UserStatisticSaveCmdExe userStatisticSaveCmdExe;
 
     @Override
     public SingleResponse<UserVO> register(UserRegisterCmd cmd) {
 
         UserVO vo = userRegisterCmdExe.execute(cmd);
-        userRoleSaveCmdExe.execute(UserRoleSaveCmd.builder().mid(vo.getId()).roleId(2).build());
-        userStatisticSaveCmdExe.execute(UserStatisticSaveCmd.builder().id(vo.getId()).coinCount(0).dynamicCount(0).gotLikesCount(0).build());
+
+        UserRoleSaveCmd userRoleSaveCmd = new UserRoleSaveCmd();
+        userRoleSaveCmd.setRoleId(2);
+        userRoleSaveCmd.setMid(vo.getId());
+        userRoleSaveCmdExe.execute(userRoleSaveCmd);
+
+        UserStatisticSaveCmd userStatisticSaveCmd = new UserStatisticSaveCmd();
+        userStatisticSaveCmd.setId(vo.getId());
+        userStatisticSaveCmd.setDynamicCount(0);
+        userStatisticSaveCmd.setCoinCount(0);
+        userStatisticSaveCmd.setGotLikesCount(0);
+
+        userStatisticSaveCmdExe.execute(userStatisticSaveCmd);
         return SingleResponse.of(vo);
 
-    }
-
-    @Override
-    public Boolean checkId(Integer id) {
-        return userCheckIdQueryExe.execute(id);
     }
 
 }

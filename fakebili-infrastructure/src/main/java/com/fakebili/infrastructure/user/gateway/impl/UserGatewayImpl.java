@@ -1,6 +1,7 @@
 package com.fakebili.infrastructure.user.gateway.impl;
 
 import com.alibaba.cola.exception.BizException;
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.fakebili.domain.user.entity.UserEntity;
 import com.fakebili.domain.user.gateway.UserGateway;
 import com.fakebili.infrastructure.constant.enums.error.user.UserCodeEnum;
@@ -52,16 +53,22 @@ public class UserGatewayImpl implements UserGateway {
      * 新增用户
      */
     private UserEntity addUser(UserEntity userEntity) {
+
         UserDO queryUser = userMapper.selectById(userEntity.getId());
         if (queryUser != null) {
             throw new BizException(UserCodeEnum.B_USER_USER_REPEAT.getMessage());
         }
-        // 2. 再保存userDO
-        UserDO userDO = UserConverter.toAddUserDO(userEntity);
-        int update = userMapper.insert(userDO);
+
+        int update = userMapper.insert(UserConverter.toAddUserDO(userEntity));
         if (update < 1) {
             throw new PersistenceException("注册用户异常");
         }
+
+        LambdaQueryWrapper<UserDO> queryWrapper = new LambdaQueryWrapper<>();
+        queryWrapper.eq(UserDO::getEmail, userEntity.getEmail());
+        UserDO userDO = userMapper.selectOne(queryWrapper);
+
+        userEntity.setId(userDO.getId());
 
         return userEntity;
     }

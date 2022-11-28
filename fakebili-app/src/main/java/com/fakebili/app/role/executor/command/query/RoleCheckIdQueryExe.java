@@ -1,7 +1,7 @@
 package com.fakebili.app.role.executor.command.query;
 
 import com.alibaba.cola.catchlog.CatchAndLog;
-import com.fakebili.domain.role.RoleGateway;
+import com.fakebili.domain.role.gateway.RoleGateway;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 

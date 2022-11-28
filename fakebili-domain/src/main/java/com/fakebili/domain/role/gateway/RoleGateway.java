@@ -1,4 +1,4 @@
-package com.fakebili.domain.role;
+package com.fakebili.domain.role.gateway;
 
 /**
  * @author lgz
