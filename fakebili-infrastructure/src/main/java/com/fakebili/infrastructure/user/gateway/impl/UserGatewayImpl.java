@@ -10,6 +10,7 @@ import com.fakebili.infrastructure.user.database.converter.UserConverter;
 import com.fakebili.infrastructure.user.gateway.impl.database.dataobject.UserDO;
 import com.fakebili.infrastructure.user.gateway.impl.database.mapper.UserMapper;
 import lombok.RequiredArgsConstructor;
+import org.apache.catalina.User;
 import org.apache.ibatis.exceptions.PersistenceException;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
@@ -41,8 +42,10 @@ public class UserGatewayImpl implements UserGateway {
     }
 
     @Override
-    public Boolean checkByUsername(Integer userId, String username) {
-        return true;
+    public UserEntity selectUser(Integer userId, String username) {
+        LambdaQueryWrapper<UserDO> user = new LambdaQueryWrapper<>();
+        user.eq(UserDO::getNickname, username).or().eq(UserDO::getId, userId);
+        return UserConverter.toEntity(userMapper.selectOne(user));
     }
 
     @Override

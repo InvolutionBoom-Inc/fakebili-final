@@ -24,7 +24,7 @@ public interface UserGateway {
      * @param username 用户名
      * @return true-已存在
      */
-    Boolean checkByUsername(Integer userId, String username);
+    Object selectUser(Integer userId, String username);
 
     /**
      * 判断id是否存在

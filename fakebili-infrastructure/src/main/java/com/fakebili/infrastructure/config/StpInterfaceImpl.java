@@ -1,6 +1,8 @@
 package com.fakebili.infrastructure.config;
 
 import cn.dev33.satoken.stp.StpInterface;
+import com.fakebili.infrastructure.user.gateway.impl.database.mapper.UserMapper;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -12,21 +14,17 @@ import java.util.List;
  * @description 自定义权限验证接口扩展
  */
 @Component
+@RequiredArgsConstructor
 public class StpInterfaceImpl implements StpInterface {
+
+    private final UserMapper userMapper;
 
     /**
      * 返回一个账号所拥有的权限码集合
      */
     @Override
     public List<String> getPermissionList(Object loginId, String loginType) {
-        // 本list仅做模拟，实际项目中要根据具体业务逻辑来查询权限
-        List<String> list = new ArrayList<>();
-        list.add("101");
-        list.add("user.add");
-        list.add("user.update");
-        list.add("user.get");
-        list.add("art.*");
-        return list;
+        return userMapper.selectPermsByUserId(Integer.valueOf((String) loginId));
     }
 
     /**
@@ -34,11 +32,7 @@ public class StpInterfaceImpl implements StpInterface {
      */
     @Override
     public List<String> getRoleList(Object loginId, String loginType) {
-        // 本list仅做模拟，实际项目中要根据具体业务逻辑来查询角色
-        List<String> list = new ArrayList<>();
-        list.add("admin");
-        list.add("super-admin");
-        return list;
+        return userMapper.selectRolesByUserId(Integer.valueOf((String) loginId));
     }
 
 }
