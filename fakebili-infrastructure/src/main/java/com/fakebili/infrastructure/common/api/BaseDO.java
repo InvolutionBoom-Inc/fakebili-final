@@ -18,7 +18,7 @@ import java.sql.Timestamp;
 public abstract class BaseDO {
 
     @TableId(type = IdType.AUTO)
-    private Long id;
+    private Integer id;
 
     @TableField(fill = FieldFill.INSERT)
     private Timestamp createTime;
@@ -26,8 +26,4 @@ public abstract class BaseDO {
     @TableField(fill = FieldFill.INSERT_UPDATE)
     private Timestamp updateTime;
 
-    @TableLogic
-    @TableField(select = false)
-    private Boolean deleteFlag;
-    
 }

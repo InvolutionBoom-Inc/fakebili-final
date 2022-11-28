@@ -1,10 +1,10 @@
 package com.fakebili.infrastructure.user.gateway.impl;
 
 import com.alibaba.cola.exception.BizException;
+import com.fakebili.domain.user.entity.UserEntity;
+import com.fakebili.domain.user.gateway.UserGateway;
 import com.fakebili.infrastructure.constant.enums.error.user.UserCodeEnum;
 import com.fakebili.infrastructure.user.database.converter.UserConverter;
-import com.fakebili.domain.user.gateway.UserGateway;
-import com.fakebili.domain.user.entity.UserEntity;
 import com.fakebili.infrastructure.user.gateway.impl.database.dataobject.UserDO;
 import com.fakebili.infrastructure.user.gateway.impl.database.mapper.UserMapper;
 import lombok.RequiredArgsConstructor;
@@ -39,8 +39,13 @@ public class UserGatewayImpl implements UserGateway {
     }
 
     @Override
-    public Boolean checkByUsername(Long userId, String username) {
+    public Boolean checkByUsername(Integer userId, String username) {
         return true;
+    }
+
+    @Override
+    public Boolean checkById(Integer id) {
+        return userMapper.selectById(id) != null;
     }
 
     /**
@@ -49,9 +54,8 @@ public class UserGatewayImpl implements UserGateway {
     private UserEntity addUser(UserEntity userEntity) {
         UserDO queryUser = userMapper.selectById(userEntity.getId());
         if (queryUser != null) {
-            throw new BizException(UserCodeEnum.B_USER_USERNAME_REPEAT.getMessage());
+            throw new BizException(UserCodeEnum.B_USER_USER_REPEAT.getMessage());
         }
-
         // 2. 再保存userDO
         UserDO userDO = UserConverter.toAddUserDO(userEntity);
         int update = userMapper.insert(userDO);

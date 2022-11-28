@@ -11,7 +11,7 @@ import java.util.List;
  * @date 2022/11/24 15:53:37
  * @description 自定义权限验证接口扩展
  */
-@Component    // 保证此类被SpringBoot扫描，完成Sa-Token的自定义权限验证扩展
+@Component
 public class StpInterfaceImpl implements StpInterface {
 
     /**

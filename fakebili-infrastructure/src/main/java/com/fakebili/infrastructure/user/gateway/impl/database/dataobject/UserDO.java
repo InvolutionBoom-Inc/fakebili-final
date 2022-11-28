@@ -1,5 +1,7 @@
 package com.fakebili.infrastructure.user.gateway.impl.database.dataobject;
 
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableLogic;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.fakebili.infrastructure.common.api.BaseDO;
 import com.fakebili.domain.user.entity.SexEnum;
@@ -57,5 +59,9 @@ public class UserDO extends BaseDO {
      * 封禁状态
      */
     private Boolean silence;
+
+    @TableLogic
+    @TableField(select = false)
+    private Boolean deleteFlag;
 
 }

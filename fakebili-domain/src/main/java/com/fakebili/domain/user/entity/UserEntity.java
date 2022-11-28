@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 @Data
 public class UserEntity {
 
-    private Long id;
+    private Integer id;
 
     /**
      * 昵称

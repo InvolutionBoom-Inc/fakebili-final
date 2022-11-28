@@ -12,6 +12,9 @@ import java.time.LocalDateTime;
  */
 @Data
 public class UserVO {
+
+    private Integer id;
+
     /**
      * 昵称
      */

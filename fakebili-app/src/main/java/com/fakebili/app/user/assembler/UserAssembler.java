@@ -24,6 +24,7 @@ public class UserAssembler {
 
     public static UserVO toValueObject(UserEntity userEntity) {
         UserVO userVO = new UserVO();
+        userVO.setId(userEntity.getId());
         userVO.setNickname(userEntity.getNickname());
         userVO.setEmail(userEntity.getEmail());
         userVO.setTel(userEntity.getTel());
