@@ -12,8 +12,8 @@ import lombok.AllArgsConstructor;
 public enum RoleCodeEnum implements ErrorCode {
 
     B_ROLE_UNDEFINED("B_ROLE_undefined", "角色不存在");
-    private String code;
-    private String message;
+    private final String code;
+    private final String message;
 
     @Override
     public String getCode() {

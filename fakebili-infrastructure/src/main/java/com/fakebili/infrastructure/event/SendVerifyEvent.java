@@ -9,10 +9,8 @@ import org.springframework.context.ApplicationEvent;
  * @since 0.1.0
  */
 public class SendVerifyEvent extends ApplicationEvent {
-    private TextVerifyEntity textVerifyEntity;
 
     public SendVerifyEvent(TextVerifyEntity textVerifyEntity) {
         super(textVerifyEntity);
-        this.textVerifyEntity = textVerifyEntity;
     }
 }

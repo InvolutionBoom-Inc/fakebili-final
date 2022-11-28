@@ -12,10 +12,10 @@ import lombok.AllArgsConstructor;
 public enum UserRoleCodeEnum implements ErrorCode {
 
     B_USER_ROLE_UNDEFINED("B_USER_roleUndefined", "用户角色信息不存在"),
-    B_USER_ROLE_ERROR("B_USER_roleError","用户角色关联异常");
+    B_USER_ROLE_ERROR("B_USER_roleError", "用户角色关联异常");
 
-    private String code;
-    private String message;
+    private final String code;
+    private final String message;
 
     @Override
     public String getCode() {

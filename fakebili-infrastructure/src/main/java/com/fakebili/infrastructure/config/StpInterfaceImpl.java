@@ -5,7 +5,6 @@ import com.fakebili.infrastructure.user.gateway.impl.database.mapper.UserMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**

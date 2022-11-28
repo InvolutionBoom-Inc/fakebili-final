@@ -4,14 +4,11 @@ import com.alibaba.cola.exception.BizException;
 import com.fakebili.domain.user.entity.UserRoleEntity;
 import com.fakebili.domain.user.gateway.UserRoleGateway;
 import com.fakebili.infrastructure.constant.enums.error.system.SystemCodeEnum;
-import com.fakebili.infrastructure.constant.enums.error.user.UserCodeEnum;
 import com.fakebili.infrastructure.constant.enums.error.user.UserRoleCodeEnum;
-import com.fakebili.infrastructure.user.database.converter.UserConverter;
 import com.fakebili.infrastructure.user.database.converter.UserRoleConverter;
 import com.fakebili.infrastructure.user.gateway.impl.database.dataobject.UserRoleDO;
 import com.fakebili.infrastructure.user.gateway.impl.database.mapper.UserRoleMapper;
 import lombok.RequiredArgsConstructor;
-import org.apache.ibatis.exceptions.PersistenceException;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 

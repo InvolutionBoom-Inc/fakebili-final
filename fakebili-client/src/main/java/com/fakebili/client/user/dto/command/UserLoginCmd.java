@@ -4,7 +4,6 @@ import com.alibaba.cola.dto.Command;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
-import javax.validation.constraints.Email;
 import javax.validation.constraints.Size;
 import java.io.Serial;
 

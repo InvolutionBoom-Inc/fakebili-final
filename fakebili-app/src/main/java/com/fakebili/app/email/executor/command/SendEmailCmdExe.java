@@ -26,11 +26,10 @@ public class SendEmailCmdExe {
     @Value("${spring.mail.username}")
     private String sendMailer;
 
-    public boolean execute(SendEmailCmd cmd) {
-        switch (cmd.getType().getKey()) {
-            case 0 -> sendCaptcha(cmd);
+    public void execute(SendEmailCmd cmd) {
+        if (cmd.getType().getKey() == 0) {
+            sendCaptcha(cmd);
         }
-        return true;
     }
 
     public void sendCaptcha(SendEmailCmd cmd) {

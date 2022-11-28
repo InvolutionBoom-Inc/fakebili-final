@@ -153,7 +153,7 @@ public class RedisServiceImpl implements RedisService {
 
     @Override
     public Map<Object, Double> zReverseRangeWithScore(String key, long start, long end) {
-        return redisTemplate.opsForZSet().reverseRangeWithScores(key, start, end)
+        return Objects.requireNonNull(redisTemplate.opsForZSet().reverseRangeWithScores(key, start, end))
                 .stream()
                 .collect(Collectors.toMap(ZSetOperations.TypedTuple::getValue, ZSetOperations.TypedTuple::getScore));
     }
