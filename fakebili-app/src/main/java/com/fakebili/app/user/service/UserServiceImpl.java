@@ -1,17 +1,20 @@
 package com.fakebili.app.user.service;
 
 import com.alibaba.cola.catchlog.CatchAndLog;
+import com.alibaba.cola.dto.Response;
 import com.alibaba.cola.dto.SingleResponse;
-import com.fakebili.app.user.executor.command.UserLoginCmdExe;
+import com.fakebili.app.user.executor.command.ResetPasswordCmdExe;
 import com.fakebili.app.user.executor.command.UserRegisterCmdExe;
 import com.fakebili.app.user.executor.command.UserRoleSaveCmdExe;
 import com.fakebili.app.user.executor.command.UserStatisticSaveCmdExe;
+import com.fakebili.app.user.executor.query.UserLoginCmdExe;
 import com.fakebili.client.user.api.IUserService;
-import com.fakebili.client.user.dto.command.UserLoginCmd;
+import com.fakebili.client.user.dto.command.ResetPasswordCmd;
 import com.fakebili.client.user.dto.command.UserRegisterCmd;
 import com.fakebili.client.user.dto.command.UserRoleSaveCmd;
 import com.fakebili.client.user.dto.command.UserStatisticSaveCmd;
 import com.fakebili.client.user.dto.data.UserVO;
+import com.fakebili.client.user.dto.query.UserLoginCmd;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -34,6 +37,8 @@ public class UserServiceImpl implements IUserService {
     private final UserRoleSaveCmdExe userRoleSaveCmdExe;
 
     private final UserStatisticSaveCmdExe userStatisticSaveCmdExe;
+
+    private final ResetPasswordCmdExe resetPasswordCmdExe;
 
     @Override
     public SingleResponse<UserVO> register(UserRegisterCmd cmd) {
@@ -59,6 +64,12 @@ public class UserServiceImpl implements IUserService {
     @Override
     public SingleResponse<Map<String, Object>> login(UserLoginCmd cmd) {
         return SingleResponse.of(userLoginCmdExe.execute(cmd));
+    }
+
+    @Override
+    public Response resetPassword(ResetPasswordCmd cmd) {
+        resetPasswordCmdExe.execute(cmd);
+        return Response.buildSuccess();
     }
 
 }

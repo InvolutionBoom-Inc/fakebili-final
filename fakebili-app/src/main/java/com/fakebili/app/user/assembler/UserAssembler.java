@@ -1,8 +1,9 @@
 package com.fakebili.app.user.assembler;
 
-import com.fakebili.domain.user.entity.UserEntity;
+import com.fakebili.client.user.dto.command.ResetPasswordCmd;
 import com.fakebili.client.user.dto.command.UserRegisterCmd;
 import com.fakebili.client.user.dto.data.UserVO;
+import com.fakebili.domain.user.entity.UserEntity;
 
 /**
  * @author Emilelu
@@ -11,12 +12,20 @@ import com.fakebili.client.user.dto.data.UserVO;
  */
 public class UserAssembler {
 
-    private UserAssembler(){
+    private UserAssembler() {
     }
 
     public static UserEntity toEntity(UserRegisterCmd co) {
         UserEntity userEntity = new UserEntity();
         userEntity.setNickname(co.getNickname());
+        userEntity.setEmail(co.getEmail());
+        userEntity.setPassword(co.getPassword());
+        return userEntity;
+    }
+
+    public static UserEntity toEntity(ResetPasswordCmd co) {
+        UserEntity userEntity = new UserEntity();
+        userEntity.setId(co.getId());
         userEntity.setEmail(co.getEmail());
         userEntity.setPassword(co.getPassword());
         return userEntity;

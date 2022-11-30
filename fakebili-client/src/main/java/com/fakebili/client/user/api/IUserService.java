@@ -1,9 +1,11 @@
 package com.fakebili.client.user.api;
 
+import com.alibaba.cola.dto.Response;
 import com.alibaba.cola.dto.SingleResponse;
-import com.fakebili.client.user.dto.command.UserLoginCmd;
+import com.fakebili.client.user.dto.command.ResetPasswordCmd;
 import com.fakebili.client.user.dto.command.UserRegisterCmd;
 import com.fakebili.client.user.dto.data.UserVO;
+import com.fakebili.client.user.dto.query.UserLoginCmd;
 
 import java.util.Map;
 
@@ -29,5 +31,13 @@ public interface IUserService {
      * @return Response
      */
     SingleResponse<Map<String, Object>> login(UserLoginCmd cmd);
+
+    /**
+     * 忘记密码
+     *
+     * @param cmd 忘记密码请求
+     * @return Response
+     */
+    Response resetPassword(ResetPasswordCmd cmd);
 
 }

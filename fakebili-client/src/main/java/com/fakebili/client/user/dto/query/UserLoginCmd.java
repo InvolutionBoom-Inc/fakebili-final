@@ -1,4 +1,4 @@
-package com.fakebili.client.user.dto.command;
+package com.fakebili.client.user.dto.query;
 
 import com.alibaba.cola.dto.Command;
 import lombok.Data;

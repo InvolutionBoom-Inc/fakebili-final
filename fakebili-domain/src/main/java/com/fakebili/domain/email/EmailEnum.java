@@ -12,7 +12,8 @@ import lombok.Getter;
 @AllArgsConstructor
 public enum EmailEnum {
 
-    VERIFY_CODE(0, "fakebili--账户注册验证");
+    VERIFY_CODE(0, "fakebili--账户注册验证"),
+    RESET_PASSWORD_CODE(1, "fakebili--忘记密码验证");
 
     private final Integer key;
 

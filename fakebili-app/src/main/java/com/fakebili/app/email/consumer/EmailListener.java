@@ -10,7 +10,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.context.event.EventListener;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Component;
- 
+
 /**
  * @author zzl
  * @date 2022/11/26 18:34:38
@@ -24,19 +24,27 @@ public class EmailListener {
 
     public final EmailTemplate emailTemplate;
 
+    SendEmailCmd sendEmailCmd = new SendEmailCmd();
+
     @Async
     @EventListener(classes = SendVerifyEvent.class)
     public void onApplicationEvent(SendVerifyEvent event) {
 
         TextVerifyEntity source = (TextVerifyEntity) event.getSource();
-        SendEmailCmd sendEmailCmd = new SendEmailCmd();
-        if (source.getType() == 0) {
-            sendEmailCmd.setType(EmailEnum.VERIFY_CODE);
-            sendEmailCmd.setSubject(EmailEnum.VERIFY_CODE.getValue());
-        }
-        sendEmailCmd.setRecipient(source.getEmail());
-        sendEmailCmd.setContent(emailTemplate.captchaTemplate(source.getCode()));
 
+        switch (source.getType()) {
+            case 0 -> emailContent(EmailEnum.VERIFY_CODE, emailTemplate.captchaTemplate(source.getCode()));
+            case 1 ->
+                    emailContent(EmailEnum.RESET_PASSWORD_CODE, emailTemplate.resetPasswordTemplate(source.getCode()));
+        }
+
+        sendEmailCmd.setRecipient(source.getEmail());
         emailService.sendEmail(sendEmailCmd);
+    }
+
+    private void emailContent(EmailEnum type, String content) {
+        sendEmailCmd.setType(type);
+        sendEmailCmd.setSubject(type.getValue());
+        sendEmailCmd.setContent(content);
     }
 }

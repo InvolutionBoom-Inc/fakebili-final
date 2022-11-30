@@ -80,10 +80,11 @@ public class UserGatewayImpl implements UserGateway {
         }
 
         UserDO userDO = findById.get();
+        userDO.setPassword(userEntity.getPassword());
 
         // 2. 再保存userDO
         try {
-            userMapper.update(userDO, null);
+            userMapper.updateById(userDO);
         } catch (Exception e) {
             throw new BizException(SystemCodeEnum.B_SERVER_ERROR.getMessage());
         }

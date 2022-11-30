@@ -1,11 +1,11 @@
-package com.fakebili.app.user.executor.command;
+package com.fakebili.app.user.executor.query;
 
 import cn.dev33.satoken.stp.StpUtil;
 import cn.hutool.crypto.digest.MD5;
 import com.alibaba.cola.exception.BizException;
 import com.fakebili.app.user.assembler.UserAssembler;
-import com.fakebili.client.user.dto.command.UserLoginCmd;
 import com.fakebili.client.user.dto.data.UserVO;
+import com.fakebili.client.user.dto.query.UserLoginCmd;
 import com.fakebili.domain.user.entity.UserEntity;
 import com.fakebili.domain.user.gateway.UserGateway;
 import com.fakebili.infrastructure.constant.enums.error.user.UserCodeEnum;

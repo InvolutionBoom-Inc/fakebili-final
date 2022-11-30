@@ -27,12 +27,10 @@ public class SendEmailCmdExe {
     private String sendMailer;
 
     public void execute(SendEmailCmd cmd) {
-        if (cmd.getType().getKey() == 0) {
-            sendCaptcha(cmd);
-        }
+        sendEmail(cmd);
     }
 
-    public void sendCaptcha(SendEmailCmd cmd) {
+    public void sendEmail(SendEmailCmd cmd) {
 
         SimpleMailMessage mail = new SimpleMailMessage();
         //邮件发件人

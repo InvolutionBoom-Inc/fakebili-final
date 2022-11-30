@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 import javax.validation.constraints.Email;
+import javax.validation.constraints.NotNull;
 import java.io.Serial;
 
 /**
@@ -21,5 +22,8 @@ public class SendVerifyCmd extends Command {
 
     @Email
     private String email;
+
+    @NotNull
+    private Integer type;
 
 }
