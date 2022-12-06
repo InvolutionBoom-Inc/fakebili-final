@@ -43,6 +43,7 @@ public class UserLoginCmdExe {
         data.put("user", user);
         data.put("permission_list", StpUtil.getPermissionList());
         data.put("role_list", StpUtil.getRoleList());
+        data.put("token", StpUtil.getTokenValue());
 
         return data;
     }
