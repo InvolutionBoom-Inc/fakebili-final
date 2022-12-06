@@ -6,8 +6,8 @@ logging:
     root: warn
 
 jasypt:
-  mysql-base-url: fakebili-encrypt[Bc77lYfmbnsWX73/7axyv75hySsSZBzoslF4gYyVptj2MSmekBN8TJ4sDns+jQJCxjybeJPl9wiRD7oKYbMXPsqc9JUoAlazxRL2owOeaJo=]
-  mysql-password: fakebili-encrypt[B5V+oH14UpQKO7W6ifhixwiZCy81PhZ3Q4pH5nCmtv+txZSjaoCmLn/7hWpeEeUns+kNPLHqd9uBuMvorij5EQ==]
+  mysql-base-url: fakebili-encrypt[LR5qfeq2uKzf6O4+rijnmeW51yM5YKDuEE/vMJAcSVREYZfHaFFTWIGghRClv9u3]
+  mysql-password: fakebili-encrypt[cGRQkWqkRXkSTW8qAChmK8il+hUVe9X3SVe8yZIsG03Nsrbp92bfTzhVyzGB2obvHFL0vA9qT7MljA0AtCb/CA==]
   redis-host: fakebili-encrypt[Ci01aZmOYwMnV97uivjCUUoXv4U/6iPhGUUcoZkOT7kVjJIT6tSxamTXhCjdK8fZ]
   redis-password: fakebili-encrypt[elZ84p7mN7rpZezd5J7Bov4gJnHlEy+E7O5ec03xUyGqmlCvZ2dAJr5zUk6JfbLS]
   mail-username: fakebili-encrypt[vLVK42TvK+ClQGh5TwlTaQ8TdnlFEgQsPpMAbBY9Rydx5R0w6inEL7pmtNN07P8Wur/x27yGX8OpMZ5GhfS50A==]
@@ -23,7 +23,7 @@ spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://${jasypt.mysql-base-url}/fakebili?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf8&allowMultiQueries=true
-    username: root
+    username: fakebili
     password: ${jasypt.mysql-password}
   jackson:
     default-property-inclusion: NON_NULL
