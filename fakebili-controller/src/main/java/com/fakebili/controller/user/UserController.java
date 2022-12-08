@@ -1,5 +1,6 @@
 package com.fakebili.controller.user;
 
+import cn.dev33.satoken.stp.StpUtil;
 import com.alibaba.cola.dto.Response;
 import com.alibaba.cola.dto.SingleResponse;
 import com.fakebili.client.user.api.IUserService;
@@ -41,4 +42,8 @@ public class UserController {
         return userService.resetPassword(cmd);
     }
 
+    @PostMapping("logout")
+    public Response logout(){
+        return userService.logout();
+    }
 }

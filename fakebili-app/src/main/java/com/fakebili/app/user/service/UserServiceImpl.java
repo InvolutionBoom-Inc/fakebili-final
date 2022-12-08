@@ -3,10 +3,7 @@ package com.fakebili.app.user.service;
 import com.alibaba.cola.catchlog.CatchAndLog;
 import com.alibaba.cola.dto.Response;
 import com.alibaba.cola.dto.SingleResponse;
-import com.fakebili.app.user.executor.command.ResetPasswordCmdExe;
-import com.fakebili.app.user.executor.command.UserRegisterCmdExe;
-import com.fakebili.app.user.executor.command.UserRoleSaveCmdExe;
-import com.fakebili.app.user.executor.command.UserStatisticSaveCmdExe;
+import com.fakebili.app.user.executor.command.*;
 import com.fakebili.app.user.executor.query.UserLoginCmdExe;
 import com.fakebili.client.user.api.IUserService;
 import com.fakebili.client.user.dto.command.ResetPasswordCmd;
@@ -40,6 +37,8 @@ public class UserServiceImpl implements IUserService {
 
     private final ResetPasswordCmdExe resetPasswordCmdExe;
 
+    private final UserLogoutCmdExe userLogoutCmdExe;
+
     @Override
     public SingleResponse<UserVO> register(UserRegisterCmd cmd) {
 
@@ -69,6 +68,12 @@ public class UserServiceImpl implements IUserService {
     @Override
     public Response resetPassword(ResetPasswordCmd cmd) {
         resetPasswordCmdExe.execute(cmd);
+        return Response.buildSuccess();
+    }
+
+    @Override
+    public Response logout() {
+        userLogoutCmdExe.execute();
         return Response.buildSuccess();
     }
 

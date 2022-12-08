@@ -40,4 +40,11 @@ public interface IUserService {
      */
     Response resetPassword(ResetPasswordCmd cmd);
 
+    /**
+     * 登出
+     *
+     * @return Response
+     */
+    Response logout();
+
 }
