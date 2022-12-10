@@ -7,6 +7,8 @@ import com.fakebili.client.user.dto.command.ResetPasswordCmd;
 import com.fakebili.client.user.dto.command.UserRegisterCmd;
 import com.fakebili.client.user.dto.data.UserVO;
 import com.fakebili.client.user.dto.query.UserLoginCmd;
+import com.fakebili.infrastructure.common.annotation.OptLog;
+import com.fakebili.infrastructure.constant.OptTypeConstant;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -28,6 +30,7 @@ public class UserController {
         return userService.register(cmd);
     }
 
+    @OptLog(optType = OptTypeConstant.SELECT, optModuleType = "user", optDesc = "登录")
     @PostMapping("login")
     public SingleResponse<Map<String, Object>> login(@RequestBody @Valid UserLoginCmd cmd) {
         return userService.login(cmd);

@@ -39,6 +39,8 @@
         <commons-pool.version>2.11.1</commons-pool.version>
         <sa-token-spring-boot-starter.version>1.32.0</sa-token-spring-boot-starter.version>
         <sa-token-dao-redis-jackson.version>1.32.0</sa-token-dao-redis-jackson.version>
+        <ip2region.version>1.7.2</ip2region.version>
+        <UserAgentUtils.version>1.20</UserAgentUtils.version>
     </properties>
 
     <dependencyManagement>
@@ -191,6 +193,16 @@
                 <version>${commons-pool.version}</version>
             </dependency>
             <!-- Sa-Token Relative -->
+            <dependency>
+                <groupId>org.lionsoul</groupId>
+                <artifactId>ip2region</artifactId>
+                <version>${ip2region.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>eu.bitwalker</groupId>
+                <artifactId>UserAgentUtils</artifactId>
+                <version>${UserAgentUtils.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 

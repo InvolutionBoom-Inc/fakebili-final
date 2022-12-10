@@ -33,6 +33,5 @@ public interface UserGateway {
      * @return 是否
      */
     Boolean checkById(Integer id);
-    
 
 }

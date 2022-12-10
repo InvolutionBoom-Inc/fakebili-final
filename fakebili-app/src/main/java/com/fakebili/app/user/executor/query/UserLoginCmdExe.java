@@ -37,6 +37,7 @@ public class UserLoginCmdExe {
         }
 
         StpUtil.login(userEntity.getId());
+        StpUtil.getSession().set("user", userEntity);
 
         UserVO user = UserAssembler.toValueObject(userEntity);
         HashMap<String, Object> data = new HashMap<>();
