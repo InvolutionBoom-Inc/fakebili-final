@@ -1,5 +1,7 @@
 package com.fakebili.app.user.executor.query;
 
+import cn.hutool.core.bean.BeanUtil;
+import cn.hutool.core.bean.copier.CopyOptions;
 import com.fakebili.app.user.assembler.UserInfoAssembler;
 import com.fakebili.domain.user.entity.UserEntity;
 import com.fakebili.domain.user.gateway.UserGateway;
@@ -24,7 +26,6 @@ public class UserInfoCmdExe {
 
     public Map<String, Object> getUserInfo(Integer id) {
         UserEntity userinfo = copyUserInfo(userGateway.getInfo(id));
-        System.out.println(userinfo);
         UserEntity info = infoMerge(userStatisticGateway.info(userinfo), userinfo);
         return UserInfoAssembler.toMap(UserInfoAssembler.toValueObject(info));
     }
@@ -36,9 +37,7 @@ public class UserInfoCmdExe {
     }
 
     public UserEntity infoMerge(UserEntity info, UserEntity entity) {
-        entity.setDynamicCount(info.getDynamicCount());
-        entity.setCoinCount(info.getCoinCount());
-        entity.setGotLikesCount(info.getGotLikesCount());
+        BeanUtil.copyProperties(info,entity, CopyOptions.create().ignoreNullValue());
         return entity;
     }
 
