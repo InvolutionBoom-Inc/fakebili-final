@@ -13,16 +13,16 @@ public enum VideoCodeEnum implements ErrorCode {
 
     B_VIDEO_UNDEFINED("B_VIDEO_undefined", "视频不存在");
 
-    private final String code;
-    private final String message;
+    private String code;
+    private String message;
 
     @Override
     public String getCode() {
-        return null;
+        return code;
     }
 
     @Override
     public String getMessage() {
-        return null;
+        return message;
     }
 }

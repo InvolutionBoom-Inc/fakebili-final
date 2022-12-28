@@ -14,8 +14,8 @@ public enum UserRoleCodeEnum implements ErrorCode {
     B_USER_ROLE_UNDEFINED("B_USER_roleUndefined", "用户角色信息不存在"),
     B_USER_ROLE_ERROR("B_USER_roleError", "用户角色关联异常");
 
-    private final String code;
-    private final String message;
+    private String code;
+    private String message;
 
     @Override
     public String getCode() {

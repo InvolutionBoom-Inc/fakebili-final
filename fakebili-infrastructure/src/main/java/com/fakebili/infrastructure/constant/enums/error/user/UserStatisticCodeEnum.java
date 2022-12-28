@@ -14,16 +14,16 @@ public enum UserStatisticCodeEnum implements ErrorCode {
     B_USER_STATISTIC_UNDEFINED("B_USER_statisticUndefined", "用户统计信息不存在"),
     B_USER_STATISTIC_REPEAT("B_USER_statisticRepeat", "用户统计重复");
 
-    private final String code;
-    private final String message;
+    private String code;
+    private String message;
 
     @Override
     public String getCode() {
-        return null;
+        return code;
     }
 
     @Override
     public String getMessage() {
-        return null;
+        return message;
     }
 }

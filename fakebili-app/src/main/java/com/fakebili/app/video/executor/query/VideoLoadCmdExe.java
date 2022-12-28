@@ -29,29 +29,37 @@ public class VideoLoadCmdExe {
     public Map<String, Object> videoLoad(Integer id) {
         LambdaQueryWrapper<VideoDO> videoWrapper = new LambdaQueryWrapper<>();
         LambdaQueryWrapper<UserDO> userWrapper = new LambdaQueryWrapper<>();
-        videoWrapper.eq(VideoDO::getId,id);
-        if (videoMapper.selectCount(videoWrapper) < 1){
+        videoWrapper.eq(VideoDO::getId, id);
+        if (videoMapper.selectCount(videoWrapper) < 1) {
             throw new BizException(VideoCodeEnum.B_VIDEO_UNDEFINED.getCode(), VideoCodeEnum.B_VIDEO_UNDEFINED.getMessage());
         }
         VideoDO videoDO = videoMapper.selectOne(videoWrapper);
-        userWrapper.eq(UserDO::getId,videoDO.getMid());
+        userWrapper.eq(UserDO::getId, videoDO.getMid());
         UserDO userDO = userMapper.selectOne(userWrapper);
-        return setMap(videoDO,userDO);
+        return setMap(videoDO, userDO);
     }
 
     public Map<String, Object> setMap(VideoDO videoDO, UserDO userDO) {
+        HashMap<String, Object> map = new HashMap<>();
+
         HashMap<String, Object> videoMap = new HashMap<>();
-        videoMap.put("mid",videoDO.getMid());
-        videoMap.put("title",videoDO.getTitle());
-        videoMap.put("video_pic",videoDO.getVideoPic());
-        videoMap.put("description",videoDO.getDescription());
-        videoMap.put("video_url",videoDO.getVideoUrl());
-        videoMap.put("duration",videoDO.getDuration());
-        videoMap.put("pub_date",videoDO.getPubDate());
-        videoMap.put("ctime",videoDO.getCtime());
-        videoMap.put("video_update_time",videoDO.getVideoUpdateTime());
-        videoMap.put("nickname",userDO.getNickname());
-        videoMap.put("face",userDO.getFace());
-        return videoMap;
+        videoMap.put("mid", videoDO.getMid());
+        videoMap.put("title", videoDO.getTitle());
+        videoMap.put("video_pic", videoDO.getVideoPic());
+        videoMap.put("description", videoDO.getDescription());
+        videoMap.put("video_url", videoDO.getVideoUrl());
+        videoMap.put("duration", videoDO.getDuration());
+        videoMap.put("pub_date", videoDO.getPubDate());
+        videoMap.put("ctime", videoDO.getCtime());
+        videoMap.put("video_update_time", videoDO.getVideoUpdateTime());
+
+        HashMap<String, Object> userMap = new HashMap<>();
+        userMap.put("nickname", userDO.getNickname());
+        userMap.put("face", userDO.getFace());
+
+        map.put("video",videoMap);
+        map.put("user",userMap);
+
+        return map;
     }
 }
