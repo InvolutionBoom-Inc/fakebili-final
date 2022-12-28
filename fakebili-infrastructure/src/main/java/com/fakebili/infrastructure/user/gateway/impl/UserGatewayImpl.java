@@ -111,6 +111,7 @@ public class UserGatewayImpl implements UserGateway {
 
         UserDO userDO = findById.get();
         userDO.setPassword(userEntity.getPassword());
+        userDO.setEmail(userEntity.getEmail());
 
         // 2. 再保存userDO
         try {
