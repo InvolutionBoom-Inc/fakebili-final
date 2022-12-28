@@ -1,6 +1,8 @@
 package com.fakebili.client.user.api;
 
 import com.alibaba.cola.dto.Response;
+import com.alibaba.cola.dto.SingleResponse;
+import com.fakebili.client.user.dto.command.UserInfoUpdateCmd;
 import com.fakebili.client.user.dto.command.UserStatisticSaveCmd;
 
 /**
@@ -17,4 +19,16 @@ public interface IUserStatisticService {
      */
     Response save(UserStatisticSaveCmd cmd);
 
+    /**
+     * 获取用户个人信息
+     *
+     * @return response
+     */
+    SingleResponse<Map<String, Object>> getUserInfo(Integer id);
+
+    /**
+     * 修改用户资料
+     * @return
+     */
+    Response update(UserInfoUpdateCmd cmd);
 }

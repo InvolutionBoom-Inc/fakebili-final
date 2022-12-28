@@ -34,4 +34,14 @@ public interface UserGateway {
      */
     Boolean checkById(Integer id);
 
+    /**
+     * 获取用户信息
+     *
+     * @param id id
+     * @return 用户统计实体
+     */
+    UserEntity getInfo(Integer id);
+
+    UserEntity update(UserEntity userEntity);
+
 }

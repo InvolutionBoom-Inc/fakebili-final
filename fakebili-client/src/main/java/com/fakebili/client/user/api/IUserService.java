@@ -41,6 +41,14 @@ public interface IUserService {
     Response resetPassword(ResetPasswordCmd cmd);
 
     /**
+     * 查询是nickname是否有存在数据
+     *
+     * @param nickname
+     * @return
+     */
+    Boolean queryOnByNickname(String nickname);
+
+    /**
      * 登出
      *
      * @return Response

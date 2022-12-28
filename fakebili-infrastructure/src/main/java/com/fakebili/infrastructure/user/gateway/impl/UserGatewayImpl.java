@@ -51,6 +51,36 @@ public class UserGatewayImpl implements UserGateway {
         return userMapper.selectById(id) != null;
     }
 
+    @Override
+    public UserEntity getInfo(Integer id) {
+        UserDO userDO = userMapper.selectById(id);
+        if (userDO == null) {
+            throw new BizException(UserCodeEnum.B_USER_UNDEFINED.getMessage());
+        }
+        return UserConverter.toEntity(userDO);
+    }
+
+    @Override
+    public UserEntity update(UserEntity userEntity) {
+        Optional<UserDO> findById = Optional.ofNullable(userMapper.selectById(userEntity.getId()));
+        if (findById.isEmpty()) {
+            throw new BizException(UserCodeEnum.B_USER_UNDEFINED.getMessage());
+        }
+
+        UserDO userDO = findById.get();
+        userDO.setNickname(userEntity.getNickname());
+        userDO.setSex(userEntity.getSex());
+
+        // 2. 再保存userDO
+        try {
+            userMapper.updateById(userDO);
+        } catch (Exception e) {
+            throw new BizException(SystemCodeEnum.B_SERVER_ERROR.getMessage());
+        }
+
+        return UserConverter.toEntity(userDO);
+    }
+
     /**
      * 新增用户
      */

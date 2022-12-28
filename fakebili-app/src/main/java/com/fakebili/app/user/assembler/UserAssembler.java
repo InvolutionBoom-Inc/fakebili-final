@@ -1,6 +1,7 @@
 package com.fakebili.app.user.assembler;
 
 import com.fakebili.client.user.dto.command.ResetPasswordCmd;
+import com.fakebili.client.user.dto.command.UserInfoUpdateCmd;
 import com.fakebili.client.user.dto.command.UserRegisterCmd;
 import com.fakebili.client.user.dto.data.UserVO;
 import com.fakebili.domain.user.entity.UserEntity;
@@ -28,6 +29,14 @@ public class UserAssembler {
         userEntity.setId(co.getId());
         userEntity.setEmail(co.getEmail());
         userEntity.setPassword(co.getPassword());
+        return userEntity;
+    }
+
+    public static UserEntity toEntity(UserInfoUpdateCmd co) {
+        UserEntity userEntity = new UserEntity();
+        userEntity.setId(co.getId());
+        userEntity.setNickname(co.getNickname());
+        userEntity.setSex(co.getSex());
         return userEntity;
     }
 
