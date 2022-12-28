@@ -2,7 +2,7 @@ package com.fakebili.app.user.assembler;
 
 import com.fakebili.client.user.dto.command.UserStatisticSaveCmd;
 import com.fakebili.client.user.dto.data.UserStatisticVO;
-import com.fakebili.domain.user.entity.UserStatisticEntity;
+import com.fakebili.domain.user.entity.UserEntity;
 
 /**
  * @author lgz
@@ -11,22 +11,22 @@ import com.fakebili.domain.user.entity.UserStatisticEntity;
  */
 public class UserStatisticAssembler {
 
-    private UserStatisticAssembler(){
+    private UserStatisticAssembler() {
     }
 
-    public static UserStatisticEntity toEntity(UserStatisticSaveCmd co) {
+    public static UserEntity toEntity(UserStatisticSaveCmd co) {
 
-        UserStatisticEntity userStatisticEntity = new UserStatisticEntity();
-        userStatisticEntity.setId(co.getId());
-        userStatisticEntity.setDynamicCount(co.getDynamicCount());
-        userStatisticEntity.setCoinCount(co.getCoinCount());
-        userStatisticEntity.setGotLikesCount(co.getGotLikesCount());
+        UserEntity userEntity = new UserEntity();
+        userEntity.setId(co.getId());
+        userEntity.setDynamicCount(co.getDynamicCount());
+        userEntity.setCoinCount(co.getCoinCount());
+        userEntity.setGotLikesCount(co.getGotLikesCount());
 
-        return userStatisticEntity;
+        return userEntity;
 
     }
 
-    public static UserStatisticVO toValueObject(UserStatisticEntity userEntity) {
+    public static UserStatisticVO toValueObject(UserEntity userEntity) {
 
         UserStatisticVO userStatisticVO = new UserStatisticVO();
         userStatisticVO.setId(userEntity.getId());

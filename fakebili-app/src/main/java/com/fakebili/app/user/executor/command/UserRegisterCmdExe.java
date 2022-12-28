@@ -14,8 +14,6 @@ import com.github.houbb.sensitive.word.core.SensitiveWordHelper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
-import javax.annotation.Resource;
-
 /**
  * @author Emilelu
  * @version 0.1.0 2022/11/24 23:11:10
@@ -25,8 +23,7 @@ import javax.annotation.Resource;
 @RequiredArgsConstructor
 public class UserRegisterCmdExe {
 
-    @Resource
-    private UserGateway userGateway;
+    private final UserGateway userGateway;
 
     public final IEmailService emailService;
 

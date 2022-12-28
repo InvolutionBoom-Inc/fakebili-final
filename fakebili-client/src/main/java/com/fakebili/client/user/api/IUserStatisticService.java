@@ -5,6 +5,8 @@ import com.alibaba.cola.dto.SingleResponse;
 import com.fakebili.client.user.dto.command.UserInfoUpdateCmd;
 import com.fakebili.client.user.dto.command.UserStatisticSaveCmd;
 
+import java.util.Map;
+
 /**
  * @author lgz
  * @version 0.1.0 2022/11/28 13:11:29
@@ -14,6 +16,7 @@ public interface IUserStatisticService {
 
     /**
      * 保存用户统计信息
+     *
      * @param cmd cmd
      * @return response
      */

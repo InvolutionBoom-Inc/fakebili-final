@@ -20,9 +20,9 @@ import org.springframework.stereotype.Component;
 @RequiredArgsConstructor
 public class EmailListener {
 
-    public final IEmailService emailService;
+    private final IEmailService emailService;
 
-    public final EmailTemplate emailTemplate;
+    private final EmailTemplate emailTemplate;
 
     SendEmailCmd sendEmailCmd = new SendEmailCmd();
 

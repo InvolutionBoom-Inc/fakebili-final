@@ -11,8 +11,6 @@ import com.fakebili.infrastructure.constant.enums.error.user.UserCodeEnum;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
-import javax.annotation.Resource;
-
 /**
  * @author lgz
  * @version 0.1.0 2022/11/27 22:11:20
@@ -21,9 +19,7 @@ import javax.annotation.Resource;
 @Component
 @RequiredArgsConstructor
 public class UserRoleSaveCmdExe {
-
-    @Resource
-    private UserRoleGateway userRoleGateway;
+    private final UserRoleGateway userRoleGateway;
 
     private final UserGateway userGateway;
     private final RoleGateway roleGateway;

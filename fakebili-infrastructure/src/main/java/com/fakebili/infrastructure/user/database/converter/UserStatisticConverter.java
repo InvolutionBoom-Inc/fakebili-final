@@ -1,6 +1,6 @@
 package com.fakebili.infrastructure.user.database.converter;
 
-import com.fakebili.domain.user.entity.UserStatisticEntity;
+import com.fakebili.domain.user.entity.UserEntity;
 import com.fakebili.infrastructure.user.gateway.impl.database.dataobject.UserStatisticDO;
 import org.springframework.beans.BeanUtils;
 
@@ -11,16 +11,22 @@ import org.springframework.beans.BeanUtils;
  */
 public class UserStatisticConverter {
 
-    public static UserStatisticEntity toEntity(UserStatisticDO userStatisticDO) {
-        UserStatisticEntity userStatisticEntity = new UserStatisticEntity();
-        BeanUtils.copyProperties(userStatisticDO, userStatisticEntity);
-        return userStatisticEntity;
+    public static UserEntity toEntity(UserStatisticDO userStatisticDO) {
+        UserEntity userEntity = new UserEntity();
+        BeanUtils.copyProperties(userStatisticDO, userEntity);
+        return userEntity;
     }
 
-    public static UserStatisticDO toAddUserStatisticDO(UserStatisticEntity userStatisticEntity) {
+    public static UserStatisticDO toAddUserStatisticDO(UserEntity userEntity) {
 
         UserStatisticDO userStatisticDO = new UserStatisticDO();
-        BeanUtils.copyProperties(userStatisticEntity, userStatisticDO);
+        BeanUtils.copyProperties(userEntity, userStatisticDO);
+        return userStatisticDO;
+    }
+
+    public static UserStatisticDO toAddValue(UserEntity userEntity) {
+        UserStatisticDO userStatisticDO = new UserStatisticDO();
+        userStatisticDO.setUserId(userEntity.getId());
         return userStatisticDO;
     }
 }

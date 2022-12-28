@@ -16,6 +16,7 @@ public interface UserMapper extends BaseMapper<UserDO> {
 
     /**
      * 根据用户ID查询该权限
+     *
      * @param userId 用户ID
      * @return 权限
      */
@@ -23,6 +24,7 @@ public interface UserMapper extends BaseMapper<UserDO> {
 
     /**
      * 根据用户ID查询该角色
+     *
      * @param userId 用户ID
      * @return 角色
      */

@@ -1,7 +1,8 @@
 package com.fakebili.infrastructure.user.gateway.impl;
 
 import com.alibaba.cola.exception.BizException;
-import com.fakebili.domain.user.entity.UserStatisticEntity;
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.fakebili.domain.user.entity.UserEntity;
 import com.fakebili.domain.user.gateway.UserStatisticGateway;
 import com.fakebili.infrastructure.constant.enums.error.system.SystemCodeEnum;
 import com.fakebili.infrastructure.constant.enums.error.user.UserStatisticCodeEnum;
@@ -25,37 +26,50 @@ public class UserStatisticGatewayImpl implements UserStatisticGateway {
 
     @Override
     @Transactional(rollbackFor = Throwable.class)
-    public UserStatisticEntity save(UserStatisticEntity userStatisticEntity) {
+    public UserEntity save(UserEntity userEntity) {
         // 新增
-        if (userStatisticMapper.selectById(userStatisticEntity.getId()) == null) {
-            return addUserStatistic(userStatisticEntity);
+        if (userStatisticMapper.selectById(userEntity.getId()) == null) {
+            return addUserStatistic(userEntity);
         }
         // 修改
-        return modifyUserStatistic(userStatisticEntity);
+        return modifyUserStatistic(userEntity);
 
+    }
+
+    /**
+     * 查询用户关联信息
+     */
+    public UserEntity info(UserEntity userEntity) {
+        LambdaQueryWrapper<UserStatisticDO> wrapper = new LambdaQueryWrapper<>();
+        wrapper.eq(UserStatisticDO::getUserId, userEntity.getId());
+        UserStatisticDO userStatisticDO = userStatisticMapper.selectOne(wrapper);
+        if (userStatisticDO == null) {
+            throw new BizException(UserStatisticCodeEnum.B_USER_STATISTIC_UNDEFINED.getMessage());
+        }
+        return UserStatisticConverter.toEntity(userStatisticDO);
     }
 
     /**
      * 新增用户
      */
-    private UserStatisticEntity addUserStatistic(UserStatisticEntity userStatisticEntity) {
+    private UserEntity addUserStatistic(UserEntity userEntity) {
 
         try {
-            userStatisticMapper.insert(UserStatisticConverter.toAddUserStatisticDO(userStatisticEntity));
+            userStatisticMapper.insert(UserStatisticConverter.toAddUserStatisticDO(userEntity));
         } catch (Exception e) {
             throw new BizException(UserStatisticCodeEnum.B_USER_STATISTIC_REPEAT.getMessage());
         }
 
-        return userStatisticEntity;
+        return userEntity;
 
     }
 
     /**
      * 修改用户
      */
-    private UserStatisticEntity modifyUserStatistic(UserStatisticEntity userStatisticEntity) {
+    private UserEntity modifyUserStatistic(UserEntity userEntity) {
 
-        UserStatisticDO userStatisticDO = UserStatisticConverter.toAddUserStatisticDO(userStatisticEntity);
+        UserStatisticDO userStatisticDO = UserStatisticConverter.toAddUserStatisticDO(userEntity);
         if (userStatisticMapper.selectById(userStatisticDO.getId()) == null) {
             throw new BizException(UserStatisticCodeEnum.B_USER_STATISTIC_UNDEFINED.getMessage());
         }
@@ -69,4 +83,6 @@ public class UserStatisticGatewayImpl implements UserStatisticGateway {
         return UserStatisticConverter.toEntity(userStatisticDO);
 
     }
+
+
 }

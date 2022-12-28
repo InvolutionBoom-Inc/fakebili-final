@@ -1,6 +1,6 @@
 package com.fakebili.domain.user.gateway;
 
-import com.fakebili.domain.user.entity.UserStatisticEntity;
+import com.fakebili.domain.user.entity.UserEntity;
 
 /**
  * @author lgz
@@ -12,9 +12,13 @@ public interface UserStatisticGateway {
     /**
      * 保存用户信息
      *
-     * @param userStatisticEntityr userStatisticEntityr
+     * @param userEntity userEntity
      * @return 用户信息实体
      */
-    UserStatisticEntity save(UserStatisticEntity userStatisticEntityr);
+    UserEntity save(UserEntity userEntity);
 
+    /**
+     * 查询用户关联信息
+     */
+    UserEntity info(UserEntity userEntity);
 }

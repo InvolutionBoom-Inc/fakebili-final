@@ -12,7 +12,6 @@ import com.fakebili.infrastructure.constant.enums.error.user.UserCodeEnum;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
-import javax.annotation.Resource;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -25,8 +24,7 @@ import java.util.Map;
 @RequiredArgsConstructor
 public class UserLoginCmdExe {
 
-    @Resource
-    private UserGateway userGateway;
+    private final UserGateway userGateway;
 
     public Map<String, Object> execute(UserLoginCmd cmd) {
         String encodedPassword = MD5.create().digestHex(cmd.getPassword() + "114514");

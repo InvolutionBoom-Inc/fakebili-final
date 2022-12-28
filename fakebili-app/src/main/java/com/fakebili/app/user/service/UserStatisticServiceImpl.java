@@ -5,11 +5,14 @@ import com.alibaba.cola.dto.Response;
 import com.alibaba.cola.dto.SingleResponse;
 import com.fakebili.app.user.executor.command.UserInfoUpdateCmdExe;
 import com.fakebili.app.user.executor.command.UserStatisticSaveCmdExe;
+import com.fakebili.app.user.executor.query.UserInfoCmdExe;
 import com.fakebili.client.user.api.IUserStatisticService;
 import com.fakebili.client.user.dto.command.UserInfoUpdateCmd;
 import com.fakebili.client.user.dto.command.UserStatisticSaveCmd;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+
+import java.util.Map;
 
 /**
  * @author lgz

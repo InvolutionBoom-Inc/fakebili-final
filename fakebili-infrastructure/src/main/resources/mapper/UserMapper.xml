@@ -15,4 +15,5 @@
                  LEFT JOIN fakebili_user_role AS ur ON r.id = ur.role_id
         WHERE ur.mid = #{userId}
     </select>
+
 </mapper>

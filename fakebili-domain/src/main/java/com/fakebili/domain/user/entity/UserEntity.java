@@ -6,14 +6,14 @@ import java.time.LocalDateTime;
 
 /**
  * @author lgz
- * @version 0.1.0 2022/11/24 20:11:25
+ * @version 0.1.0 2022/11/28 10:11:17
  * @since 0.1.0
  */
 @Data
 public class UserEntity {
 
     private Integer id;
-
+    
     /**
      * 昵称
      */
@@ -43,6 +43,21 @@ public class UserEntity {
      * 头像链接
      */
     private String face;
+
+    /**
+     * 动态数
+     */
+    private Integer dynamicCount;
+
+    /**
+     * 硬币数
+     */
+    private Integer coinCount;
+
+    /**
+     * 获赞数
+     */
+    private Integer gotLikesCount;
 
     /**
      * 注册时间

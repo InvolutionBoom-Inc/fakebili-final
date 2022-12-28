@@ -1,11 +1,9 @@
 package com.fakebili.infrastructure.user.gateway.impl.database.dataobject;
 
-import com.baomidou.mybatisplus.annotation.FieldFill;
-import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
+import com.fakebili.infrastructure.common.api.BaseDO;
 import lombok.Data;
-
-import java.sql.Timestamp;
+import lombok.EqualsAndHashCode;
 
 /**
  * @author lgz
@@ -13,20 +11,24 @@ import java.sql.Timestamp;
  * @since 0.1.0
  */
 @Data
+@EqualsAndHashCode(callSuper = true)
 @TableName("fakebili_user_statistic")
-public class UserStatisticDO {
-
-    private Integer id;
-
+public class UserStatisticDO extends BaseDO {
+    /**
+     * 用户关联Id
+     */
+    private Integer userId;
+    /**
+     * 动态数
+     */
     private Integer dynamicCount;
-
+    /**
+     * 硬币数
+     */
     private Integer coinCount;
-
+    /**
+     * 获赞数
+     */
     private Integer gotLikesCount;
-
-    @TableField(fill = FieldFill.INSERT)
-    private Timestamp createTime;
-
-    @TableField(fill = FieldFill.INSERT_UPDATE)
-    private Timestamp updateTime;
+    
 }
