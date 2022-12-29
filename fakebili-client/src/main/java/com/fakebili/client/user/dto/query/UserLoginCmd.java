@@ -22,7 +22,7 @@ public class UserLoginCmd extends Command {
     /**
      * 昵称
      */
-    @Size(max = 10, min = 1, message = "昵称需在1-10之间")
+    @Size(max = 20, min = 1, message = "昵称需在1-20之间")
     private String nickname;
 
     /**
