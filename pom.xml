@@ -41,6 +41,7 @@
         <sa-token-dao-redis-jackson.version>1.32.0</sa-token-dao-redis-jackson.version>
         <ip2region.version>1.7.2</ip2region.version>
         <UserAgentUtils.version>1.20</UserAgentUtils.version>
+        <jave-all-deps.version>2.5.1</jave-all-deps.version>
     </properties>
 
     <dependencyManagement>
@@ -202,6 +203,11 @@
                 <groupId>eu.bitwalker</groupId>
                 <artifactId>UserAgentUtils</artifactId>
                 <version>${UserAgentUtils.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>ws.schild</groupId>
+                <artifactId>jave-all-deps</artifactId>
+                <version>${jave-all-deps.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
